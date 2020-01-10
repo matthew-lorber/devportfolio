@@ -1,0 +1,99 @@
+@font-face {
+    font-family: architext;
+    src: url(../fonts/Architex.ttf);
+}
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+#loader {
+    display:none;
+    width: auto;
+    height: calc(min(40vh,50vw));
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+}
+#logo,
+#logoLight {
+    display:none;
+    width:calc(min(20vw, 75px));
+    transform-origin: center center;
+    transform-box:fill-box;
+}
+#sun {
+    z-index:-1;
+    position:fixed;
+    top:0;
+    left:-100vw;
+    width:200vw;
+    height:100vh;
+    background-image:radial-gradient(circle,white 0%,transparent 10%, transparent 100%);
+}
+.leaf,
+#tree,
+.fruit {
+    transform-origin: bottom center;
+    transform-box:fill-box;
+}
+#tree {
+    fill:#765c48;
+}
+.fruit {
+    fill:#a52a2a;
+    stroke:#000;
+    stroke-width:0.2px;
+}
+.leaf {
+    fill:rgb(31, 122, 12);
+    stroke:#000;
+    stroke-width:0.2px;
+}
+#loadText,
+#me {
+    font-family: architext;
+}
+#hello,
+#living,
+#pleased {
+    z-index:1;
+    display:none;
+    font-family: architext;
+    font-size:1.8rem;
+    text-align: center;
+    font-weight:500;
+}
+.fall {
+    z-index:0;
+    width:100vh;
+    height:100vw;
+    position:fixed;
+    bottom:0;
+    left:-100vh;
+    transform-origin: bottom right;
+    transform-box:fill-box;
+}
+#thinker {
+    transform:translateX(0.25vw);
+}
+.gears {
+    transform-origin: center center;
+    transform-box:fill-box;
+}
+.cw {
+    animation: spin0 5s linear infinite;
+}
+.ccw {
+    animation: spin1 5s linear infinite;
+}
+@keyframes spin0 {
+    from {transform:rotate(0deg)}
+    to {transform:rotate(360deg)}
+}
+@keyframes spin1 {
+    from {transform:rotate(0deg)}
+    to {transform:rotate(-360deg)}
+}
