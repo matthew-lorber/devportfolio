@@ -4,7 +4,7 @@
 }
 * {
     box-sizing:border-box;
-    font-family: architext;
+    /* font-family: architext; */
 }
 html {
     text-rendering: optimizeLegibility;

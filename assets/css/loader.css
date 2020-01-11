@@ -2,6 +2,10 @@
     font-family: architext;
     src: url(../fonts/Architex.ttf);
 }
+* {
+    font-family:architext;
+    box-sizing: border-box;
+}
 html, body {
     margin: 0;
     height: 100%;
@@ -17,41 +21,16 @@ html, body {
     margin: auto;
     position: relative;
 }
-#logo,
-#logoLight {
+#logo {
     display:none;
-    width:calc(min(20vw, 75px));
+    filter:invert(1);
+}
+.logo {
     transform-origin: center center;
     transform-box:fill-box;
+    font-family:alleyster;
 }
-#sun {
-    z-index:-1;
-    position:fixed;
-    top:0;
-    left:-100vw;
-    width:200vw;
-    height:100vh;
-    background-image:radial-gradient(circle,white 0%,transparent 10%, transparent 100%);
-}
-.leaf,
-#tree,
-.fruit {
-    transform-origin: bottom center;
-    transform-box:fill-box;
-}
-#tree {
-    fill:#765c48;
-}
-.fruit {
-    fill:#a52a2a;
-    stroke:#000;
-    stroke-width:0.2px;
-}
-.leaf {
-    fill:rgb(31, 122, 12);
-    stroke:#000;
-    stroke-width:0.2px;
-}
+
 #loadText,
 #me {
     font-family: architext;
