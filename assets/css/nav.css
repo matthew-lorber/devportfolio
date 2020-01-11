@@ -1,0 +1,46 @@
+#nav {
+    /* display: none; */
+    width:100vw;
+    position: fixed;
+    bottom: 1vh;
+    left: 0;
+    margin:none;
+    padding:none;
+    text-align:center;
+    z-index:30;
+    background:none;
+    transform:scale(1.3);
+    filter:invert(1);
+}
+.circle {
+    fill:#fff;
+    opacity:0;
+    cursor:pointer;
+    transition:0.5s ease;
+    z-index:100;
+}
+.circle:active,
+.circle:focus,
+.circle:hover {
+    /* fill:#fff; */
+    outline:none;
+    border:none;
+    opacity:0.2;
+    transform:scale(1.3);
+}
+#github,
+#portfolio,
+.about,
+.home,
+#mailto,
+.codepen,
+.linkedin,
+.circle {
+    transform-origin: center center;
+    transform-box: fill-box;
+    z-index:10;
+}
+#navborder {
+    fill:transparent;
+    stroke:none;
+}
