@@ -4,7 +4,6 @@
 }
 * {
     box-sizing:border-box;
-    /* font-family: architext; */
 }
 html {
     text-rendering: optimizeLegibility;
@@ -81,6 +80,7 @@ a {
 /* ABOUT */
 #about {
     display:none;
+    font-family:architext;
     width:100vw;
     height:100vh;
     position:fixed;
