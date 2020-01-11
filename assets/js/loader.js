@@ -1,111 +1,23 @@
 /* PAGE LOADER */
-$('#logo').fadeToggle(600);
-
-let vh = window.innerHeight;
-let vw = window.innerWidth;
-
-/* LOGO */
-anime({
-    targets: '.logo',
-    fill: '#fff',
-    duration: 2000,
-    easing: 'easeInSine'
-});
-anime({
-    targets: '#sun',
-    keyframes: [
-        {translateX:0.7*vw},
-        {translateX:0.4*vw},
-        {translateX:0.5*vw}
-    ],
-    easing: 'easeInOutSine',
-    duration: 1250,
-    direction: 'forward',
-    loop: false
-})
-anime({
-    targets: '.logo',
-    strokeDashoffset: [anime.setDashoffset, 0],
-    easing: 'easeInSine',
-    duration: 1500,
-    direction: 'forward',
-    loop: false,
-    complete: ()=>{
-        $("#logo").fadeToggle(1000);
-        $("#sun").fadeToggle(1000);
-        window.setTimeout(()=>{
-            $("#logo").remove();
-        },2000);
-    }
-})
-
-/* LOAD SEQUENCE */
-window.setTimeout(function loader() {
-    $("#loader").toggle();
-
-    let tl = anime.timeline({
-        easing: 'easeInOutExpo',
-        duration: 750,
-        complete: function() {
-            $("#loader").fadeToggle(1000);
-                cascade();
-            window.setTimeout(()=>{
-                $("#hello").fadeToggle(1000);
-            },1000)
-        }
-    });
-        
-    tl
-    .add({
-        targets: '#tree',
-        keyframes: [
-            {scale:[0,1.1]},
-            {scale:[1.1,1]}
-        ],
-        duration: 350
-    })
-    .add({
-        targets: '.leaf',
-        keyframes: [
-            {scale:[0,1.2]},
-            {scale:[1.2,1]}
-        ],
-        duration: 150,
-        delay: anime.stagger(20)
-    },'+=1000')
-    .add({
-        targets: '.fruit',
-        keyframes: [
-            {scale:[0,1.2]},
-            {scale:[1.2,1]}
-        ],
-        duration: 300,
-        delay: anime.stagger(50)
-    },'+=500')
-    .add({
-        targets: '#loadText',
-        opacity:[0,1],
-        duration: 2000
-    })
-    .add({
-        targets: '#tree',
-        scale:[1,0],
-        duration: 300
-    },'+=1000')
-    .add({
-        targets: '.leaf',
-        rotate: 360,
-        scale:[1,0],
-        duration: 1000
-    },'-=600')
-    .add({
-        targets: '.fruit',
-        scale:[1,0],
-        duration: 200
-    },'-=600')
-},4200);
+$(window).on("load",()=>cascade());
 
 function cascade() {
+    let vh = window.innerHeight;
+    let vw = window.innerWidth;
+    let colors = [
+        "#B589D6",
+        "#9969C7",
+        "#804FB3",
+        "#6A359C",
+        "#552586",
+        "#800080",
+        "#660066",
+        "#FF6600"
+    ];
+    let divs = document.querySelectorAll(".fall");
+    for (let i=0;i<divs.length;i++) {
+        divs[i].style.background = colors[i];
+    }
     let tl = anime.timeline({
         easing: 'easeInOutExpo',
         duration: 2000
@@ -117,7 +29,9 @@ function cascade() {
         duration: 1000,
         delay: anime.stagger(100),
         rotate: 90,
-        complete: ()=> {$('body').css('background','purple')}
+        complete: ()=> {
+            $('body').css('background','orange');
+        }
     })
     .add({
         targets: '.fall',
