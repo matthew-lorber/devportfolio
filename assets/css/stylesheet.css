@@ -1,9 +1,9 @@
 @font-face {
-    font-family: architext;
-    src: url(../fonts/Architex.ttf);
+    font-family: montserrat;
+    src: url(../fonts/Montserrat-Regular.ttf);
 }
 * {
-    font-family:
+    font-family:montserrat;
     box-sizing:border-box;
     margin:none;
     padding:none;
