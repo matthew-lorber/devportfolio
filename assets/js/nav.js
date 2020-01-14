@@ -38,8 +38,9 @@ $("#nav4").mouseover(()=>{
 $("#nav5").mouseover(()=>{
     anime({
         targets: '.codepen',
-        rotate:[0,90,0],
-        delay:anime.stagger(75),
+        rotate:[0,135,0],
+        scale:[1,1.3,1],
+        delay:anime.stagger(50),
         duration:600,
         loop:false,
         easing:'easeInOutSine'

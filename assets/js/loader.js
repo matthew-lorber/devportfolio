@@ -1,22 +1,18 @@
 /* PAGE LOADER */
-$(window).on("load",()=>cascade());
+
+
+
 
 function cascade() {
     let vh = window.innerHeight;
     let vw = window.innerWidth;
-    let colors = [
-        "#B589D6",
-        "#9969C7",
-        "#804FB3",
-        "#6A359C",
-        "#552586",
-        "#800080",
-        "#660066",
-        "#FF6600"
-    ];
     let divs = document.querySelectorAll(".fall");
+    let color = 255;
+
     for (let i=0;i<divs.length;i++) {
-        divs[i].style.background = colors[i];
+        color *= 0.8;
+        let divColor = 'rgb(' + color + ',' + color + ',' + color + ')';
+        divs[i].style.background = divColor;
     }
     let tl = anime.timeline({
         easing: 'easeInOutExpo',
@@ -27,6 +23,7 @@ function cascade() {
     .add({
         targets: '.fall',
         duration: 1000,
+        direction: 'forward',
         delay: anime.stagger(100),
         rotate: 90,
         complete: ()=> {
@@ -66,10 +63,11 @@ function cascade() {
                     direction: 'forward',
                     loop: false,
                 })
-        },1000);
+            },1000);
+
             window.setTimeout(()=>$('#living').fadeToggle(1000),3000);
+
             window.setTimeout(()=>{
-                
                 anime({
                     targets: '.fall',
                     rotateY: 90,
@@ -78,17 +76,20 @@ function cascade() {
                     easing: 'easeInOutSine'
                 })
             },4000);
+
             window.setTimeout(()=>$('#about').fadeToggle(1000),5000);
+
             window.setTimeout(()=>{
                 $('#about').fadeToggle(1500);
                 $('#pleased').fadeToggle(1000);
             },8000);
+
             window.setTimeout(()=>{
                 $('#nav').fadeToggle(1000);
-                // $('.fall').remove();
+                $('.fall').remove();
                 
             },8500);
-            }
+        }
     },'-=1500')
 }
 
