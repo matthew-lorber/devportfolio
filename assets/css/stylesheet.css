@@ -5,41 +5,65 @@
 * {
     font-family:montserrat;
     box-sizing:border-box;
-    margin:none;
-    padding:none;
 }
 html {
     text-rendering: optimizeSpeed;
     text-size-adjust: 100%;
 }
 body {
-    cursor:none;
-    background:#000;
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:hidden;
     width:100vw;
     height:100vh;
-    margin:none;
+    margin:0;
+    padding:0;
 }
 body::-webkit-scrollbar {
     display: none;
 }
-#mouseDiv {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:absolute;
-    border: 1px solid black;
-    width:100px;
-    height:100px;
-    background:none;
+/* MOUSE */
+
+/* SCROLLBAR */
+#scrollBar {
+    position:fixed;
+    left:10px;
+    z-index:90;
+    transform-origin: center center;
+    transform-box:fill-box;
 }
-#mouseCir {
-    display:none;
+
+/* MAX/MIN WINDOW */
+#minmax {
+    position:fixed;
+    top:5px;
+    left:-32px;
     opacity:0.7;
 }
+#max {
+    display:block;
+}
+#min {
+    display:none;
+}
+/* SECTIONS */
+.section {
+    width:100vw;
+    height:100vh;
+    margin:0;
+    z-index:-1;
+}
+#section0 {position:fixed;top:0;left:0; background:black}
+#section1 {position:fixed;top:0;left:100vw; background:purple}
+#section2 {position:fixed;top:0;left:200vw; background:red}
+#section3 {position:fixed;top:0;left:300vw; background:green}
+#section4 {position:fixed;top:0;left:400vw; background:blue}
+#section5 {position:fixed;top:0;left:500vw; background:yellow}
+
+
+
+
 #loader {
     display:none;
     width: auto;
@@ -49,21 +73,17 @@ body::-webkit-scrollbar {
     margin: auto;
     position: relative;
 }
-#loadText,
-#me {
-    font-family: architext;
-}
 #hello,
 #living,
 #pleased {
     z-index:1;
     display:none;
-    font-family: architext;
     font-size:1.8rem;
     text-align: center;
     font-weight:500;
 }
 .fall {
+    display:none;
     z-index:0;
     width:100vh;
     height:100vw;
@@ -94,29 +114,4 @@ body::-webkit-scrollbar {
 @keyframes spin1 {
     from {transform:rotate(0deg)}
     to {transform:rotate(-360deg)}
-}
-section {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100vw;
-    height: 100vh;
-    margin:none;
-    padding:none;
-}
-a {
-    text-decoration: none;
-    color: inherit;
-}
-#about {
-    display:none;
-    font-family:architext;
-    width:100vw;
-    height:100vh;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:10;
 }
