@@ -5,10 +5,8 @@
 * {
     font-family:montserrat;
     box-sizing:border-box;
-}
-html {
-    text-rendering: optimizeSpeed;
-    text-size-adjust: 100%;
+    margin:0;
+    padding:0;
 }
 body {
     display:flex;
@@ -17,71 +15,76 @@ body {
     overflow:hidden;
     width:100vw;
     height:100vh;
-    margin:0;
-    padding:0;
+    background:black;
+    color:white;
+    font-size:0.8rem;
+    font-weight:600;
 }
-body::-webkit-scrollbar {
-    display: none;
+a {
+    text-decoration: none;
+    color:inherit;
 }
-/* MOUSE */
-
-/* SCROLLBAR */
-#scrollBar {
+canvas {
+    z-index:500;
+}
+/* links */
+#links {
     position:fixed;
-    left:10px;
-    z-index:90;
-    transform-origin: center center;
-    transform-box:fill-box;
+    top:1rem;
+    right:calc(100vw + 1rem);
+    color:white;
+    z-index:300;
 }
-
-/* MAX/MIN WINDOW */
-#minmax {
-    position:fixed;
-    top:5px;
-    left:-32px;
-    opacity:0.7;
+#internal-profile {
+    cursor:pointer;
+    margin-right:1rem;
 }
-#max {
+.nav {
+    top:50vh;
+    cursor:pointer;
+    transition:0.3s ease-in-out;
+    z-index:300;
+}
+.nav:hover {
+    transform:scale(1.1);
+}
+#navR {
+    position:sticky;
+    right:1vw;
+}
+#navL {
+    position:sticky;
+    left:1vw;
+}
+/* scroll snap */
+.snap-container {
+    scroll-snap-type: mandatory;
+    scroll-snap-points-x: repeat(100vw);
+    scroll-snap-type: x mandatory;
+    transition: all 0.5s ease-in-out;
+}
+.snap-section {
+    scroll-snap-align: start;
+}
+/* sections */
+section {
     display:block;
-}
-#min {
-    display:none;
-}
-/* SECTIONS */
-.section {
+    float:left;
+    position:absolute;
     width:100vw;
     height:100vh;
-    margin:0;
-    z-index:-1;
+    z-index:200;
 }
-#section0 {position:fixed;top:0;left:0; background:black}
-#section1 {position:fixed;top:0;left:100vw; background:purple}
-#section2 {position:fixed;top:0;left:200vw; background:red}
-#section3 {position:fixed;top:0;left:300vw; background:green}
-#section4 {position:fixed;top:0;left:400vw; background:blue}
-#section5 {position:fixed;top:0;left:500vw; background:yellow}
-
-
-
-
-#loader {
-    display:none;
-    width: auto;
-    height: calc(min(40vh,50vw));
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: auto;
-    position: relative;
+#section-0 {
+    background:blue;
 }
-#hello,
-#living,
-#pleased {
-    z-index:1;
-    display:none;
-    font-size:1.8rem;
-    text-align: center;
-    font-weight:500;
+#section-1 {
+    background:orange;
 }
+#section-2 {
+    background:violet;
+}
+/* animation elements */
 .fall {
     display:none;
     z-index:0;

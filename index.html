@@ -6,150 +6,262 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Matt Lorber -- Full Stack Developer</title>
-    <link rel="stylesheet" href="./assets/css/nav.css">
-    <link rel="stylesheet" href="./assets/css/stylesheet.css">
 </head>
+<style>
+body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:200vh;
+    margin:0;
+    padding:0;
+    background:red;
+    scroll-snap-type: y mandatory;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+section {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow:hidden;
+}
+#section-0 {
+    position:fixed;
+    top:0;
+    left:0;
+    background:#222;
+    /* color:#222;text-shadow: -1px -1px 1px #000; */
+}
+#section-1 {
+    position:fixed;
+    top:100vh;
+    left:0;
+    background:#bada55;
+}
+#section-2 {
+    position:fixed;
+    top:200vh;
+    left:0;
+    background:#123456;
+}
+#section-3 {
+    position:fixed;
+    top:-100vh;
+    left:0;
+    background:#a44353;
+}
+#section-4 {
+    position:fixed;
+    top:0;
+    left:100vw;
+    background:#bbb324;
+}
+#section-5 {
+    position:fixed;
+    top:0;
+    left:-100vw;
+    background:#badbed;
+}
 
+canvas {
+    position:fixed;
+    top:0;
+    left:0;
+    height:200vh;
+}
+.expression {
+    font-size:8rem;
+}
+.nav {
+    cursor:pointer;
+    z-index:1001;
+    filter:invert(1);
+}
+#navU {
+    position:fixed;
+    top:1rem;
+    left:50vw;
+}
+#navD {
+    position:fixed;
+    bottom:1rem;
+    left:50vw;
+}
+#navL {
+    position:fixed;
+    top:50vh;
+    left:1rem;
+}
+#navR {
+    position:fixed;
+    top:50vh;
+    right:1rem;
+}
+#cartesian {
+    display:flex;
+    position:fixed;
+    justify-content:center;
+    align-items:center;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index:1000;
+}
+#coord {
+    position:fixed;
+    bottom:1rem;
+    right:1rem;
+    color:white;
+    opacity:0.5;
+    z-index:1000;
+    font-size:0.7rem;
+}
+#layout {
+    display:block;
+    position:fixed;
+    bottom:5px;
+    left:5px;
+    z-index:1002;
+    transform:scale(0.5);
+}
+/* responsive design */
+@media screen and (min-width: 700px) {
+    body {
+        background:blue;
+    }
+}
+</style>
 <body>
-
-    <!-- MOUSE -->
-    <div id="mouseDiv">
-        <svg id="mouseCir" height="100" width="100">
-            <circle id="mouseCircle" cx="50" cy="50" r="20" stroke="white" />
-          </svg>
-    </div>
-    <!-- WINDOW MIN/MAX -->
-    <div id="minmax">
-        <img id="max" src="./assets/images/max.png" alt="fullscreen"/>
-        <img id="min" src="./assets/images/min.png" alt="exit fullscreen"/>
-    </div>
-    <!-- SECTIONS -->
-    <section class="section" id="section0"></section>
-    <section class="section" id="section1"></section>
-    <section class="section" id="section2"></section>
-    <section class="section" id="section3"></section>
-    <section class="section" id="section4"></section>
-    <section class="section" id="section5"></section>
-    
-    <!-- PART 2 - FALL -->
-    <div class="fall back"></div>
-    <div class="fall back"></div>
-    <div class="fall back"></div>
-    <div class="fall back"></div>
-    <div class="fall back"></div>
-    <div class="fall back"></div>
-    <div class="fall back"></div>
-    <div class="fall"></div>
-
-    <!-- PART 3 - TEXT -->
-    <div id="hello">
-        <p>Hello<span id="me">, I'm Matt.</p>
-    </div>
-    <div id="living">
-        <p>I'm a teacher and developer<br>living in Austin, Texas.</p>
-        <p>
-            <svg width="51.1mm" height="26mm" version="1.1" viewBox="0 0 51.1 26">
-                <g transform="translate(-51.4 -165)">
-                    <g transform="matrix(.179 0 0 -.179 -2.99 210)" style="fill:none;stroke:#ffffff">
-                        <g transform="translate(574 242)" style="fill:none;stroke:#ffffff">
-                            <path id="longhorn" d="m0 0c-9.48 2.58-21 0.665-30.2-2.16-17.6-5.66-32.7-17.6-49.1-26.2-8.66-3.66-20.6-4.41-28.5 0.583-1.91 1.36-5.38 0.388-5.38 0.388-1.11 0.831-2.35 1.15-3.86 0.611-3.99-2.91-8.16 1.58-12.4-0.75-4.24 2.33-8.4-2.16-12.4 0.75-1.5 0.537-2.75 0.22-3.86-0.611 0 0-3.47 0.97-5.38-0.388-7.99-4.99-19.9-4.24-28.5-0.583-16.4 8.57-31.5 20.6-49.1 26.2-9.24 2.83-20.7 4.74-30.2 2.16-1.25-0.832-2.66-2.33-2.33-4.16 0.666-1.08 1.33-2.58 2.75-2.83 34 5.08 52.3-28.6 80.7-37.5 0.055-0.361-1.61-1.75-3.41-2.72-4.02-2.22-9.98-1.36-10.4-6.85 1.08-3.41 5.24-4.66 8.24-5.99 7.07-4 15.6-0.668 22 2.58 0.748 0.75 2 0.334 2.58-0.416-0.499-15.4 11.2-25.6 13.4-39.9 1.25-6.66-2.91-11.6-3.41-17.8-0.055-2.3 1.75-0.778 2.72-8.4 0.417-1.39 3.88-5.27 7.02-6.91 2.89-1.14 6.25-1.47 9.65-1.38 3.4-0.089 6.76 0.243 9.65 1.38 3.13 1.64 6.6 5.52 7.02 6.91 0.974 7.63 2.78 6.1 2.72 8.4-0.5 6.24-4.66 11.1-3.41 17.8 2.16 14.3 13.9 24.5 13.4 39.9 0.584 0.75 1.83 1.17 2.58 0.416 6.4-3.25 14.9-6.58 22-2.58 3 1.33 7.16 2.58 8.24 5.99-0.417 5.49-6.38 4.63-10.4 6.85-1.8 0.971-3.47 2.36-3.42 2.72 28.5 8.9 46.8 42.6 80.7 37.5 1.41 0.25 2.08 1.75 2.74 2.83 0.323 1.83-1.09 3.33-2.34 4.16" style="fill:none;stroke:#fff;stroke-width:2"/>
-                        </g>
-                    </g>
+    <!-- nav buttons -->
+    <div class="nav" id="navU"><img src="./assets/images/cU.png" alt="navigate button up"/></div>
+    <div class="nav" id="navD"><img src="./assets/images/cD.png" alt="navigate button down"/></div>
+    <div class="nav" id="navL"><img src="./assets/images/cL.png" alt="navigate button left"/></div>
+    <div class="nav" id="navR"><img src="./assets/images/cR.png" alt="navigate button right"/></div>
+    <!-- cartesian loader -->
+    <div id="cartesian"><svg alt="xyz cartesian coordinate system animation" opacity="0.8" width="81.4mm" height="76.2mm" viewBox="0 0 81.4 76.2">
+            <g transform="translate(-60.7 -97.6)">
+                <g transform="translate(-3.4 -8.32)" fill="none" stroke="#fff">
+                    <circle class="cp cpFill" cx="115" cy="118" r=".597"/>
                 </g>
-            </svg>
-        </p>
-    </div>
-    <div id="pleased">
-        <p>I'm pleased to meet you.</p>
-    </div>
+                <path class="cp" d="m89.8 150h47.1" fill="none" stroke="#fff" stroke-width=".465px"/>
+                <path class="cp" d="m89.8 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".465px"/>
+                <path class="cp" d="m89.8 150v-46.5h-0.368" fill="none" stroke="#fff" stroke-width=".465px"/>
 
-
-<!-- ABOUT section -->
-<section id="about">
-    <p style="font-size:1.6rem">I have a passion for delivering intuitive, dynamically rich experiences<br>backed by cutting-edge core architecture and business logic.</p>
-    <p id="thinker">
-    <svg id="thinker" width="94" height="133">
-            <path class="m20" d="m1.9 132c0-0.027 0.18-0.49 0.4-1 0.22-0.54 0.93-2.5 1.6-4.4 1.3-3.7 1.7-4.7 3.7-8.6 1.9-3.7 4.3-7.4 6.1-9.4 0.34-0.38 1-1.2 1.5-1.9 0.47-0.67 1.1-1.5 1.3-1.8 3.3-4 5.6-8.3 6.1-12 0.13-0.79 0.23-1.5 0.23-1.6 2.3e-4 -0.09-0.25-0.13-0.58-0.1-0.92 0.088-1-0.12-1.1-2.3-0.14-2.6-0.35-3.4-1.7-6.8-1.4-3.6-2.1-4.7-4.6-7.2-2.4-2.4-3.9-4.3-4.8-5.8-0.41-0.67-1.4-2.2-2.2-3.4-0.77-1.2-1.7-2.7-2-3.3-0.8-1.4-1.3-2.2-1.7-2.8-0.66-0.98-1.9-4.6-2.4-7.3-0.12-0.54-0.35-2-0.51-3.3-0.5-3.7-0.38-10 0.23-13 1.2-4.8 3-8.9 4.8-11 2.3-2.8 4.6-4.8 6.4-5.5 0.57-0.22 0.78-0.41 1.1-1 0.23-0.41 0.49-0.98 0.6-1.3 0.35-1 1.8-3.6 2.5-4.3 0.85-0.97 2-2.3 3.2-3.7 0.54-0.64 1.7-1.8 2.6-2.6 0.88-0.77 1.7-1.5 1.8-1.6 0.27-0.27 2.3-1.6 3.2-2.1 0.42-0.24 1-0.6 1.3-0.8 0.71-0.47 2.5-1 4.3-1.3 1.9-0.26 3.9-0.11 6.8 0.49 2.8 0.6 4.1 0.62 6.5 0.14 2.4-0.47 3.9-0.63 6.9-0.73 2.5-0.088 2.7-0.072 4.1 0.3 0.83 0.21 1.9 0.53 2.4 0.71 0.92 0.35 4.2 2.4 5.4 3.4 0.42 0.35 1.2 0.93 1.8 1.3 0.54 0.36 1.3 0.91 1.6 1.2 0.35 0.31 0.93 0.76 1.3 0.99 0.37 0.23 0.91 0.64 1.2 0.91 0.3 0.27 1.5 0.95 2.6 1.5 1.9 0.93 2.2 1.2 3.6 2.5 1.6 1.5 2.2 2.4 2.9 4.1 0.11 0.29 0.48 0.94 0.82 1.4 1.3 1.9 2 3 2.4 3.6 0.48 0.81 1.5 3.7 1.5 4.3 0 0.29 0.079 0.4 0.28 0.4 0.39 0 0.48 0.78 0.37 3.3-0.081 2-0.071 2.1 0.4 3.6 0.65 2 4 8.8 6 12 0.71 1.2 0.81 1.5 0.48 1.6-0.32 0.12-0.74-0.31-2.1-2.1-1.3-1.8-1.6-2.1-1.8-2-0.11 0.11 0.98 2.3 2.1 4.2 0.42 0.72 0.56 1.1 0.45 1.2-0.33 0.33-0.7 0.016-1.5-1.2-0.82-1.3-1.3-1.8-1.1-1 0.058 0.23 0.3 0.7 0.53 1 0.65 0.96 1.4 2.3 1.4 2.6 0 0.33-0.29 0.44-0.56 0.21-0.14-0.11-0.49-0.58-0.78-1s-1.3-1.6-2.2-2.5c-1.4-1.4-2.3-2.6-3.3-4.3-0.38-0.63-0.38 2e-3 4e-3 1.1 0.48 1.3 0.42 1.7-0.23 1.5-0.24-0.053-0.44-0.036-0.44 0.036 0 0.31 0.49 2 0.79 2.7 0.39 0.92 2.3 3.9 3.1 4.7 0.3 0.33 0.83 1 1.2 1.5 0.51 0.7 0.93 1.1 2 1.7 1.6 0.95 2 1.3 2.2 2.1 0.21 0.77 0.21 1.2 0 2-0.22 0.79-1.8 2.3-2.9 2.9-1.1 0.53-1.3 0.7-1.4 1.2-0.2 0.81 0.13 1.6 1 2.5 0.73 0.74 0.85 0.94 0.87 1.5 0.028 0.72-0.53 1.8-1.2 2.3l-0.4 0.32 0.32 0.34c0.71 0.75 1.3 2.7 1 3.6-0.056 0.22-0.42 0.55-0.95 0.88-0.8 0.48-0.85 0.55-0.78 0.99 0.045 0.26 0.23 1.3 0.4 2.3 0.28 1.6 0.3 2 0.17 3.3-0.33 3.2-1.5 4.6-4.7 5.1-2.2 0.36-8-0.05-13-0.9-2.8-0.49-4.7-0.42-6.1 0.22-0.91 0.42-4.3 4-5.7 6-0.27 0.39-1.2 2-2 3.6-1.8 3.4-2.9 6.6-4 11-1.3 5.2-1.4 7.4-0.6 9.6 0.35 0.92 0.65 1.4 1.3 2.1 0.81 0.86 3.1 4.7 3.4 5.6 0.1 0.34 1.2 2.5 1.7 3.3 0.1 0.17 0.54 0.97 0.97 1.8l0.79 1.5h-30c-16 0-30-0.022-30-0.05z" style="fill:none;stroke-width:1.6;stroke:#fff"/>
-        <g transform="matrix(.24 0 0 .24 19 92)" style="paint-order:normal">
-                <path class="gears cw"
-                    d="m86-178-3 6.6-0.23 2.4 0.59 4-7.1 1.9-1.5-3.8-1.4-1.9-5.9-4.3-3.4 2 0.72 7.3 0.98 2.2 2.5 3.2-5.2 5.2-3.2-2.5-2.2-0.98-7.3-0.72-2 3.4 4.3 5.9 1.9 1.4 3.8 1.5-1.9 7.1-4-0.59-2.4 0.23-6.6 3v4l6.6 3 2.4 0.23 4-0.59 1.9 7.1-3.8 1.5-1.9 1.4-4.3 5.9 2 3.4 7.3-0.72 2.2-0.98 3.2-2.5 5.2 5.2-2.5 3.2-0.98 2.2-0.72 7.3 3.4 2 5.9-4.3 1.4-1.9 1.5-3.8 7.1 1.9-0.59 4 0.23 2.4 3 6.7h4l3-6.7 0.23-2.4-0.59-4 7.1-1.9 1.5 3.8 1.4 1.9 5.9 4.3 3.4-2-0.72-7.3-0.98-2.2-2.5-3.2 5.2-5.2 3.2 2.5 2.2 0.98 7.3 0.72 2-3.4-4.3-5.9-1.9-1.4-3.8-1.5 1.9-7.1 4 0.59 2.4-0.23 6.6-3v-4l-6.6-3-2.4-0.23-4 0.59-1.9-7.1 3.8-1.5 1.9-1.4 4.3-5.9-2-3.4-7.3 0.72-2.2 0.98-3.2 2.5-5.2-5.2 2.5-3.2 0.98-2.2 0.72-7.3-3.4-2-5.9 4.3-1.4 1.9-1.5 3.8-7.1-1.9 0.59-4-0.23-2.4-3-6.6zm2 35a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10z"
-                    style="paint-order:normal;fill:#fff" />
-            </g>
-        <g transform="matrix(.29 0 0 .29 .49 82)" style="paint-order:normal">
-                <path class="gears ccw"
-                    d="m86-178-3 6.6-0.23 2.4 0.59 4-7.1 1.9-1.5-3.8-1.4-1.9-5.9-4.3-3.4 2 0.72 7.3 0.98 2.2 2.5 3.2-5.2 5.2-3.2-2.5-2.2-0.98-7.3-0.72-2 3.4 4.3 5.9 1.9 1.4 3.8 1.5-1.9 7.1-4-0.59-2.4 0.23-6.6 3v4l6.6 3 2.4 0.23 4-0.59 1.9 7.1-3.8 1.5-1.9 1.4-4.3 5.9 2 3.4 7.3-0.72 2.2-0.98 3.2-2.5 5.2 5.2-2.5 3.2-0.98 2.2-0.72 7.3 3.4 2 5.9-4.3 1.4-1.9 1.5-3.8 7.1 1.9-0.59 4 0.23 2.4 3 6.7h4l3-6.7 0.23-2.4-0.59-4 7.1-1.9 1.5 3.8 1.4 1.9 5.9 4.3 3.4-2-0.72-7.3-0.98-2.2-2.5-3.2 5.2-5.2 3.2 2.5 2.2 0.98 7.3 0.72 2-3.4-4.3-5.9-1.9-1.4-3.8-1.5 1.9-7.1 4 0.59 2.4-0.23 6.6-3v-4l-6.6-3-2.4-0.23-4 0.59-1.9-7.1 3.8-1.5 1.9-1.4 4.3-5.9-2-3.4-7.3 0.72-2.2 0.98-3.2 2.5-5.2-5.2 2.5-3.2 0.98-2.2 0.72-7.3-3.4-2-5.9 4.3-1.4 1.9-1.5 3.8-7.1-1.9 0.59-4-0.23-2.4-3-6.6zm2 35a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10z"
-                    style="paint-order:normal;fill:#fff" />
-            </g>
-        <g transform="matrix(.33 0 0 .33 22 76)" style="paint-order:normal">
-                <path class="gears cw"
-                    d="m86-178-3 6.6-0.23 2.4 0.59 4-7.1 1.9-1.5-3.8-1.4-1.9-5.9-4.3-3.4 2 0.72 7.3 0.98 2.2 2.5 3.2-5.2 5.2-3.2-2.5-2.2-0.98-7.3-0.72-2 3.4 4.3 5.9 1.9 1.4 3.8 1.5-1.9 7.1-4-0.59-2.4 0.23-6.6 3v4l6.6 3 2.4 0.23 4-0.59 1.9 7.1-3.8 1.5-1.9 1.4-4.3 5.9 2 3.4 7.3-0.72 2.2-0.98 3.2-2.5 5.2 5.2-2.5 3.2-0.98 2.2-0.72 7.3 3.4 2 5.9-4.3 1.4-1.9 1.5-3.8 7.1 1.9-0.59 4 0.23 2.4 3 6.7h4l3-6.7 0.23-2.4-0.59-4 7.1-1.9 1.5 3.8 1.4 1.9 5.9 4.3 3.4-2-0.72-7.3-0.98-2.2-2.5-3.2 5.2-5.2 3.2 2.5 2.2 0.98 7.3 0.72 2-3.4-4.3-5.9-1.9-1.4-3.8-1.5 1.9-7.1 4 0.59 2.4-0.23 6.6-3v-4l-6.6-3-2.4-0.23-4 0.59-1.9-7.1 3.8-1.5 1.9-1.4 4.3-5.9-2-3.4-7.3 0.72-2.2 0.98-3.2 2.5-5.2-5.2 2.5-3.2 0.98-2.2 0.72-7.3-3.4-2-5.9 4.3-1.4 1.9-1.5 3.8-7.1-1.9 0.59-4-0.23-2.4-3-6.6zm2 35a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10z"
-                    style="paint-order:normal;fill:#fff" />
-            </g>
-        </svg>
-    </p>
-</section>
-
-    <!-- NAVIGATION -->
-    <div id="nav">
-        <svg width="46.3mm" height="10.2mm"viewBox="0 0 46.3 10.2">
-            <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:purple;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:green;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-            <!-- <rect x=".7" y=".7" width="44.9" height="8.78" ry=".0218" fill="none" opacity="0"/> -->
-            <rect x="1.06" y="1.1" width="44.3" height="7.99" ry="4" style="stroke:url(#grad1);stroke-width:0.2;opacity:0.8;fill:transparent"/>
-            <g fill="#fff" transform="matrix(.0627 0 0 .0592 3.17 2.87)">
-                <g style="fill:url(#grad1)">
-                    <path class="home" d="m13.1 36.8v19.2c0 0.483 0.392 0.876 0.876 0.876h20.6v-17.4h9.7v17.4h5.77c0.485 0 0.876-0.393 0.876-0.876v-19.2l-18.9-18.8zm15.4 10.8h-8.75v-8.11h8.75z"/>
-                    <path class="home" id="roof" d="m54.8 29.9-22.8-22.8-10.7 10.7v-4.73c0-1.1-0.896-2-2-2s-2 0.896-2 2v8.73l-8.03 8.03c-0.977 0.977-0.977 2.56 0 3.54 0.488 0.488 1.13 0.732 1.77 0.732s1.28-0.244 1.77-0.731l19.2-19.2 19.2 19.2c0.977 0.977 2.56 0.977 3.54 0s0.976-2.56 0-3.54z"/>
+                <g fill="none" opacity=".7" stroke="#fff" stroke-width=".165">
+                    <path class="cp" d="m136 101v48.2"/>
+                    <path class="cp" d="m131 101v48.2"/>
+                    <path class="cp" d="m125 102v48.2"/>
+                    <path class="cp" d="m120 101v48.2"/>
+                    <path class="cp" d="m115 101v48.2"/>
+                    <path class="cp" d="m110 101v48.2"/>
+                    <path class="cp" d="m105 102v48.2"/>
+                    <path class="cp" d="m99.6 102v48.2"/>
+                    <path class="cp" d="m94.3 101v48.2"/>
                 </g>
+                <path class="cp" d="m89.7 104h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.8 109h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.9 115h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.5 119h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 125h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.4 130h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.8 135h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.9 140h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m90.1 145h47" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <g fill="none" opacity=".7" stroke="#fff" stroke-width=".165">
+                    <path class="cp" d="m86.7 152h47.1"/>
+                    <path class="cp" d="m83.5 155h47.1"/>
+                    <path class="cp" d="m80.2 158h47.1"/>
+                    <path class="cp" d="m76.7 160h47.1"/>
+                    <path class="cp" d="m73.4 163h47.1"/>
+                    <path class="cp" d="m70 166h47.1"/>
+                    <path class="cp" d="m66.4 169h47.1"/>
+                </g>
+                <path class="cp" d="m94.5 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m99.5 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m105 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m110 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m115 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m120 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m126 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m131 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m136 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m90 145-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 140-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.6 130-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 135-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 125-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 119-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.6 115-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.5 109-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 104-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m66.4 122v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m70.2 119v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m73.6 116v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m76.8 113v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m80.3 110v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m83.4 108v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <path class="cp" d="m86.7 105v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
+                <g transform="translate(3.97 1.51)" fill="none" stroke="#fff" stroke-width=".188" aria-label="x">
+                    <path class="cp cpFill" d="m59.3 168q0.179 0.19 0.271 0.381 0.0659 0.132 0.216 0.692l0.322-0.483q0.128-0.176 0.311-0.333 0.183-0.161 0.322-0.22 0.0879-0.0366 0.194-0.0366 0.157 0 0.249 0.0842 0.0952 0.0842 0.0952 0.205 0 0.139-0.0549 0.19-0.103 0.0916-0.234 0.0916-0.0769 0-0.165-0.033-0.172-0.0586-0.231-0.0586-0.0879 0-0.209 0.103-0.227 0.19-0.542 0.736l0.3 1.26q0.0696 0.289 0.117 0.348 0.0476 0.0549 0.0952 0.0549 0.0769 0 0.179-0.0842 0.201-0.168 0.344-0.44l0.128 0.0659q-0.231 0.432-0.586 0.718-0.201 0.161-0.341 0.161-0.205 0-0.326-0.231-0.0769-0.143-0.319-1.23-0.571 0.993-0.916 1.28-0.223 0.183-0.432 0.183-0.147 0-0.267-0.106-0.0879-0.0806-0.0879-0.216 0-0.121 0.0806-0.201 0.0806-0.0806 0.198-0.0806t0.249 0.117q0.0952 0.0842 0.147 0.0842 0.044 0 0.114-0.0586 0.172-0.139 0.469-0.601 0.297-0.462 0.388-0.667-0.227-0.89-0.245-0.941-0.0842-0.238-0.22-0.337-0.136-0.0989-0.399-0.0989-0.0842 0-0.194 7e-3v-0.132z" stroke="#fff" stroke-width=".188" />
+                </g>
+                <g fill="none" stroke="#fff" stroke-width=".188" aria-label="z">
+                    <path class="cp cpFill" d="m89.2 98.6h2.33v0.0916l-2.53 2.64h1.07q0.381 0 0.483-0.0293t0.187-0.125q0.0879-0.0952 0.194-0.344h0.136l-0.319 0.996h-2.38v-0.106l2.53-2.64h-1.05q-0.333 0-0.403 0.0183-0.103 0.022-0.205 0.117-0.0989 0.0916-0.205 0.308h-0.139z" fill="none" stroke="#fff" stroke-width=".188"/>
+                </g>
+                <g fill="none" stroke="#fff" stroke-width=".188" aria-label="y">
+                    <path class="cp cpFill" d="m139 147q0.125 0.212 0.172 0.399 0.0476 0.183 0.0952 0.725l0.161 1.8q0.22-0.264 0.637-0.835 0.201-0.278 0.498-0.758 0.179-0.293 0.22-0.41 0.022-0.0586 0.022-0.121 0-0.0403-0.0256-0.0659t-0.136-0.0586q-0.106-0.0366-0.179-0.128-0.0696-0.0952-0.0696-0.216 0-0.15 0.0879-0.242 0.0879-0.0916 0.22-0.0916 0.161 0 0.275 0.136 0.114 0.132 0.114 0.366 0 0.289-0.198 0.663-0.198 0.37-0.762 1.14-0.564 0.769-1.37 1.68-0.553 0.626-0.82 0.787-0.267 0.165-0.458 0.165-0.114 0-0.198-0.0879-0.0879-0.0842-0.0879-0.198 0-0.143 0.121-0.26 0.117-0.117 0.256-0.117 0.0733 0 0.121 0.033 0.0293 0.0183 0.0659 0.103 0.033 0.0879 0.0623 0.117 0.0183 0.0183 0.0439 0.0183 0.022 0 0.0769-0.0366 0.201-0.125 0.469-0.396 0.352-0.359 0.52-0.586l-0.205-2.32q-0.0513-0.575-0.154-0.7-0.103-0.125-0.344-0.125-0.0769 0-0.275 0.022l-0.033-0.136z" fill="none" stroke="#fff" stroke-width=".188"/>
+                </g>
+                <g fill="none" stroke="#fff" stroke-width=".171" aria-label="(r,θ,φ)">
+                    <path class="cp cpFill" d="m114 112-0.113 0.0534q-0.397-0.758-0.571-1.34-0.134-0.454-0.134-0.915 0-1.07 0.497-1.93 0.611-1.04 1.98-2.03l0.0801 0.117q-0.617 0.457-1.01 1.02-0.487 0.708-0.798 1.71t-0.31 1.82q0 0.627 0.377 1.48z"/>
+                    <path class="cp cpFill" d="m115 108 1.15-0.187-0.481 1.62q0.584-0.998 1.06-1.4 0.27-0.227 0.441-0.227 0.11 0 0.174 0.0667 0.0634 0.0634 0.0634 0.187 0 0.22-0.113 0.421-0.0801 0.15-0.23 0.15-0.0768 0-0.134-0.0501-0.0534-0.0501-0.0667-0.154-7e-3 -0.0634-0.03-0.0834-0.0267-0.0267-0.0634-0.0267-0.0567 0-0.107 0.0267-0.0868 0.0467-0.264 0.26-0.277 0.327-0.601 0.848-0.14 0.22-0.24 0.497-0.14 0.38-0.16 0.457l-0.107 0.421h-0.511l0.617-2.07q0.107-0.36 0.107-0.514 0-0.0601-0.0501-0.1-0.0668-0.0534-0.177-0.0534-0.0701 0-0.257 0.03z"/>
+                    <path class="cp cpFill" d="m116 111q0.25-0.113 0.407-0.287 0.12-0.134 0.12-0.257 0-0.0601-0.02-0.11-0.0134-0.0267-0.0935-0.107t-0.0901-0.11q-0.0234-0.0567-0.0234-0.13 0-0.144 0.0968-0.247 0.1-0.103 0.234-0.103 0.137 0 0.24 0.11 0.107 0.11 0.107 0.277 0 0.297-0.234 0.601-0.234 0.304-0.678 0.471z"/>
+                    <path class="cp cpFill" d="m121 106q0.928 0 0.928 1.27 0 0.768-0.377 1.7-0.374 0.931-0.858 1.39-0.481 0.461-0.991 0.461-0.417 0-0.681-0.354-0.26-0.357-0.26-0.888 0-0.34 0.15-0.941 0.15-0.601 0.451-1.21 0.3-0.614 0.751-1.02 0.454-0.411 0.888-0.411zm0.207 2.27q0.224-0.704 0.224-1.37 0-0.761-0.431-0.761-0.377 0-0.741 0.571-0.364 0.567-0.668 1.56zm-1.68 0.19q-0.307 0.958-0.307 1.47 0 0.334 0.137 0.547 0.137 0.21 0.407 0.21 0.224 0 0.421-0.177 0.197-0.18 0.461-0.728t0.497-1.32z"/>
+                    <path class="cp cpFill" d="m121 111q0.25-0.113 0.407-0.287 0.12-0.134 0.12-0.257 0-0.0601-0.02-0.11-0.0134-0.0267-0.0935-0.107t-0.0901-0.11q-0.0234-0.0567-0.0234-0.13 0-0.144 0.0968-0.247 0.1-0.103 0.234-0.103 0.137 0 0.24 0.11 0.107 0.11 0.107 0.277 0 0.297-0.234 0.601-0.234 0.304-0.678 0.471z"/>
+                    <path class="cp cpFill" d="m124 112h-0.34l0.404-1.38q-0.484-3e-3 -0.751-0.29-0.264-0.29-0.264-0.794 0-0.768 0.477-1.38 0.477-0.614 1.19-0.634l-0.0367 0.12q-0.447 0.0734-0.781 0.731-0.33 0.658-0.33 1.29 0 0.761 0.541 0.784l0.451-1.49q0.17-0.577 0.307-0.858 0.137-0.284 0.337-0.427 0.2-0.147 0.427-0.147 0.32 0 0.497 0.274 0.177 0.27 0.177 0.718 0 0.808-0.501 1.45-0.497 0.634-1.42 0.668zm0.451-1.56q0.668-0.0434 1.03-0.691 0.364-0.651 0.364-1.33 0-0.577-0.294-0.577-0.177 0-0.317 0.214-0.14 0.214-0.364 0.971z"/>
+                    <path class="cp cpFill" d="m128 106 0.113-0.0634q0.397 0.754 0.567 1.34 0.137 0.454 0.137 0.915 0 1.08-0.497 1.93-0.614 1.04-1.98 2.03l-0.0801-0.103q0.617-0.461 1.01-1.02 0.487-0.708 0.798-1.71 0.31-1 0.31-1.83 0-0.627-0.377-1.48z"/>
+                </g>
+                <g fill="none" stroke="#fff" stroke-width=".188" class="cpFill" aria-label="r">
+                    <path class="cp cpFill" d="m98.6 124 1.26-0.205-0.527 1.78q0.641-1.1 1.16-1.53 0.297-0.249 0.483-0.249 0.121 0 0.19 0.0733 0.0696 0.0696 0.0696 0.205 0 0.242-0.125 0.462-0.0879 0.165-0.253 0.165-0.0842 0-0.147-0.0549-0.0586-0.055-0.0733-0.168-7e-3 -0.0696-0.033-0.0916-0.0293-0.0293-0.0696-0.0293-0.0623 0-0.117 0.0293-0.0952 0.0513-0.289 0.286-0.304 0.359-0.659 0.93-0.154 0.242-0.264 0.546-0.154 0.418-0.176 0.502l-0.117 0.462h-0.56l0.678-2.27q0.117-0.396 0.117-0.564 0-0.0659-0.0549-0.11-0.0732-0.0586-0.194-0.0586-0.0769 0-0.282 0.033z" fill="none" stroke="#fff" stroke-width=".188"/>
+                </g>
+                <g fill="none" stroke="#fff" stroke-width=".154" aria-label="θ">
+                    <path class="cp cpFill" d="m93.4 132q0.837 0 0.837 1.15 0 0.692-0.34 1.53-0.337 0.84-0.773 1.25-0.433 0.415-0.894 0.415-0.376 0-0.614-0.319-0.235-0.322-0.235-0.8 0-0.307 0.135-0.849 0.135-0.542 0.406-1.09 0.271-0.554 0.677-0.921 0.409-0.37 0.8-0.37zm0.187 2.05q0.202-0.635 0.202-1.23 0-0.686-0.388-0.686-0.34 0-0.668 0.515-0.328 0.512-0.602 1.41zm-1.51 0.172q-0.277 0.864-0.277 1.32 0 0.301 0.123 0.494 0.123 0.19 0.367 0.19 0.202 0 0.379-0.159 0.178-0.162 0.415-0.656 0.238-0.494 0.448-1.19z" fill="none" stroke="#fff" stroke-width=".154"/>
+                </g>
+                <text x="20.599701" y="115.76041" fill="#000000" font-family="sans-serif" font-size="10.6px" letter-spacing="0px" stroke-width=".265" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="20.599701" y="125.12418" stroke-width=".265"/></text>
+                <g fill="none" stroke="#fff" stroke-width=".188" aria-label="φ">
+                    <path class="cp cpFill" d="m88.4 159h-0.374l0.443-1.52q-0.531-4e-3 -0.824-0.319-0.289-0.319-0.289-0.872 0-0.842 0.524-1.52t1.31-0.696l-0.0403 0.132q-0.491 0.0806-0.857 0.802-0.363 0.722-0.363 1.41 0 0.835 0.593 0.861l0.494-1.64q0.187-0.634 0.337-0.941 0.15-0.311 0.37-0.469 0.22-0.161 0.469-0.161 0.352 0 0.546 0.3 0.194 0.297 0.194 0.787 0 0.886-0.549 1.59-0.546 0.696-1.55 0.733zm0.494-1.71q0.733-0.0476 1.13-0.758 0.399-0.714 0.399-1.46 0-0.634-0.322-0.634-0.194 0-0.348 0.234-0.154 0.234-0.399 1.07z" fill="none" stroke="#fff" stroke-width=".188"/>
+                </g>
+                <g transform="translate(-3.4 -8.32)" fill="none" stroke="#fff">
+                    <path class="cp" d="m93.1 158 21.4 16.8v-56.5z" stroke="#fff" stroke-width=".365"/>
+                </g>
+                <path class="cp" d="m89.9 136c2 1.93 3.26 3.97 4.01 6.08" fill="none" stroke="#fff" stroke-width=".365px"/>
+                <path class="cp" d="m93.6 153c-2.64 0.565-5.2 0.785-7.48-0.0668" fill="none" stroke="#fff" stroke-width=".365px"/>
             </g>
-            <g style="fill:url(#grad1)" transform="matrix(.18 0 0 .169 9.16 3.01)">
-                <path class="about" d="m13.8 17.5c-6e-3 2e-3 -0.559 0.186-1.04 0.186-0.265 0-0.372-0.055-0.406-0.079-0.168-0.117-0.48-0.336 0.054-1.4l1-1.99c0.593-1.18 0.681-2.33 0.245-3.22-0.356-0.733-1.04-1.24-1.92-1.42-0.317-0.065-0.639-0.097-0.958-0.097-1.85 0-3.09 1.08-3.15 1.13-0.179 0.158-0.221 0.42-0.102 0.626 0.12 0.206 0.367 0.3 0.595 0.222 5e-3 -2e-3 0.559-0.187 1.04-0.187 0.263 0 0.369 0.055 0.402 0.078 0.169 0.118 0.482 0.34-0.051 1.4l-1 2c-0.594 1.18-0.681 2.33-0.245 3.22 0.356 0.733 1.04 1.24 1.92 1.42 0.314 0.063 0.636 0.097 0.954 0.097 1.85 0 3.1-1.08 3.15-1.13 0.179-0.157 0.221-0.42 0.102-0.626-0.12-0.205-0.369-0.297-0.593-0.223z"/>
-                <circle class="about" id="dot" cx="13" cy="6" r="2.5"/>
-            </g>
-            <g style="fill:url(#grad1)" transform="matrix(.0922 0 0 .0869 15 2.94)">
-                <path id="portfolio" d="m24 6c-9.94 0-18 8.06-18 18s8.06 18 18 18c1.66 0 3-1.34 3-3 0-0.78-0.29-1.48-0.78-2.01-0.47-0.53-0.75-1.22-0.75-1.99 0-1.66 1.34-3 3-3h3.53c5.52 0 10-4.48 10-10 0-8.84-8.06-16-18-16zm-11 18c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6-8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm10 0c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
-            </g>
-            <g transform="matrix(.108 -.106 .106 .108 21.1 4.83)">
-                <path id="mailto" style="fill:url(#grad1)" d="m21.5 11.1-17.9-9c-0.9-0.4-1.9 0.4-1.5 1.3l2.5 6.7 11.4 1.9-11.4 1.9-2.5 6.7c-0.3 0.9 0.6 1.7 1.5 1.2l17.9-9c0.7-0.3 0.7-1.3 0-1.7z"/>
-            </g>
-            <g transform="matrix(.126 0 0 .119 27.8 3.7)" fill="none" stroke="url(#grad1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                <polygon class="codepen" points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/>
-                <line class="codepen" x1="12" x2="12" y1="22" y2="15.5"/>
-                <polyline class="codepen" points="22 8.5 12 15.5 2 8.5"/>
-                <polyline class="codepen" points="2 15.5 12 8.5 22 15.5"/>
-                <line class="codepen" x1="12" x2="12" y1="2" y2="8.5"/>
-            </g>
-            <g style="fill:url(#grad1)" transform="matrix(.00928 0 0 .00875 32.9 1.91)">
-                <path class="linkedin" d="m130 289h53.8v173h-53.8zm27-86c17.2 0 31.2 14 31.2 31.2s-14 31.2-31.2 31.2c-17.3 0-31.2-14-31.2-31.2s13.9-31.2 31.2-31.2"/>
-                <path class="linkedin" d="m218 289h51.5v23.7h0.7c7.2-13.6 24.7-27.9 50.9-27.9 54.4 0 64.5 35.8 64.5 82.4v94.8h-53.7v-84.1c0-20.1-0.3-45.9-27.9-45.9-28 0-32.2 21.9-32.2 44.4v85.6h-53.7z"/>
-            </g>
-            <g style="fill:url(#grad1)" transform="matrix(.221 0 0 .221 38.7 2.42)">
-                <path id="github" style="stroke:#000;stroke-width:0.3" d="m14.4 13c0.269 0 0.492 0.133 0.686 0.396 0.192 0.265 0.294 0.588 0.294 0.975 0 0.385-0.102 0.711-0.294 0.973-0.193 0.265-0.417 0.396-0.686 0.396-0.278 0-0.522-0.131-0.715-0.396-0.192-0.262-0.294-0.588-0.294-0.973 0-0.387 0.102-0.71 0.294-0.975 0.192-0.264 0.436-0.396 0.715-0.396m3.44-3.56c0.746 0.811 1.12 1.8 1.12 2.95 0 0.748-0.086 1.42-0.259 2.02-0.175 0.597-0.394 1.08-0.654 1.46-0.264 0.376-0.588 0.705-0.974 0.989-0.386 0.286-0.741 0.492-1.06 0.623-0.325 0.132-0.695 0.233-1.11 0.306-0.417 0.071-0.726 0.111-0.943 0.123-0.213 9e-3 -0.438 0.014-0.685 0.014-0.055 0-0.243 4e-3 -0.547 0.015-0.301 0.013-0.56 0.016-0.762 0.016s-0.461-3e-3 -0.762-0.016c-0.304-0.011-0.492-0.015-0.547-0.015-0.246 0-0.472-5e-3 -0.685-0.014-0.218-0.012-0.526-0.052-0.943-0.123-0.423-0.072-0.786-0.174-1.11-0.306-0.324-0.131-0.68-0.337-1.06-0.623-0.387-0.284-0.711-0.613-0.975-0.989-0.261-0.375-0.479-0.862-0.654-1.46-0.173-0.6-0.259-1.28-0.259-2.02 0-1.16 0.379-2.14 1.12-2.95-0.082-0.041-0.085-0.447-8e-3 -1.22 0.063-0.771 0.227-1.48 0.495-2.13 0.934 0.099 2.09 0.629 3.47 1.58 0.466-0.119 1.1-0.183 1.92-0.183 0.852 0 1.49 0.064 1.92 0.184 0.629-0.425 1.23-0.771 1.8-1.03 0.584-0.261 1-0.416 1.27-0.457l0.396-0.09c0.27 0.649 0.434 1.36 0.496 2.13 0.076 0.769 0.073 1.18-9e-3 1.22m-5.84 7.82c1.69 0 2.95-0.202 3.82-0.607 0.855-0.404 1.29-1.24 1.29-2.5 0-0.73-0.273-1.34-0.822-1.83-0.278-0.263-0.613-0.425-0.989-0.486-0.375-0.061-0.949-0.061-1.72 0-0.769 0.062-1.3 0.09-1.58 0.09-0.385 0-0.8-0.018-1.32-0.059-0.52-0.04-0.928-0.065-1.22-0.078-0.294-9e-3 -0.609 0.027-0.958 0.108-0.345 0.082-0.629 0.224-0.853 0.425-0.521 0.469-0.79 1.08-0.79 1.83 0 1.26 0.426 2.09 1.28 2.5 0.85 0.405 2.11 0.607 3.8 0.607h0.061m-2.43-4.26c0.268 0 0.492 0.133 0.685 0.396 0.192 0.265 0.294 0.588 0.294 0.975 0 0.385-0.102 0.711-0.294 0.973-0.192 0.265-0.417 0.396-0.685 0.396-0.279 0-0.522-0.131-0.716-0.396-0.192-0.262-0.294-0.588-0.294-0.973 0-0.387 0.102-0.71 0.294-0.975 0.193-0.264 0.436-0.396 0.716-0.396"/>
-            </g>
-            <circle id="nav1" class="circle" cx="5.17" cy="5.12" r="2.98" fill="none" opacity=".3"/>
-            <circle id="nav2" class="circle" cx="11.1" cy="5.07" r="2.98" fill="none" opacity=".3"/>
-            <circle id="nav3" class="circle" cx="17.2" cy="5.12" r="2.98" fill="none" opacity=".3"/>
-            <circle id="nav4"class="circle" cx="23.2" cy="5.17" r="2.98" fill="none" opacity=".3"/>
-            <a href="https://codepen.io/matthew-lorber" target="_blank"><circle id="nav5" class="circle" cx="29.2" cy="5.07" r="2.98" fill="none" opacity=".3"/></a>
-            <a href="https://www.linkedin.com/in/matthew-lorber/" target="_blank"><circle id="nav6" class="circle" cx="35.2" cy="4.96" r="2.98" fill="none" opacity=".3"/></a>
-            <a href="https://github.com/matthew-lorber" target="_blank"><circle id="nav7" class="circle" cx="41.3" cy="5.01" r="2.98" fill="none" opacity=".3"/></a>
-        </svg>
-        
-        
-    </div>
-    <!-- JS -->
+        your browser or reader doesn't support SVG</svg></div>
+    <!-- layout loader -->
+    <div id="layout"></div>
+    <!-- mouse xy coordinates -->
+    <div id="coord">( <span id="mx">0</span> , <span id="my">0</span> )</div>
+    <!-- section backgrounds -->
+    <section id="section-0"><span class="expression">section-0</span></section>
+    <section id="section-1"><span class="expression">section-1</span></section>
+    <section id="section-2"><span class="expression">section-2</span></section>
+    <section id="section-3"><span class="expression">section-3</span></section>
+    <section id="section-4"><span class="expression">section-4</span></section>
+    <section id="section-5"><span class="expression">section-5</span></section>
+    <!-- javascript -->
     <script src="./assets/js/jquery.3.4.1.min.js"></script>
     <script src="./assets/js/anime.min.js"></script>
     <script src="./assets/js/loader.js"></script>
+    <script src="./assets/js/mouse.js"></script>
+    <script src="./assets/js/cube.js"></script>
     <script src="./assets/js/nav.js"></script>
     <script src="./assets/js/p5.js"></script>
-    <!-- <script src="./assets/js/grav.js"></script> -->
-    <script src="./assets/js/mouse.js"></script>
-    <script src="./index.js"></script>
 </body>
 
 </html>

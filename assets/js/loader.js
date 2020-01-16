@@ -1,6 +1,29 @@
 /* PAGE LOADER */
+$(window).on('load',function() {
+    let tl = anime.timeline({
+        easing: 'easeInOutSine',
+        delay: anime.stagger(40),
+        direction: 'alternate',
+        loop:2
+    });
 
-
+    tl
+    .add({
+        targets: '.cp',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        duration:1500,
+    })
+    .add({
+        targets:'.cpFill',
+        fill:'#fff',
+        duration:700,
+        easing:'easeInSine'
+    },'-=1200')
+    .add({
+        targets: '.cp',
+        duration:1500
+    })
+})
 
 
 function cascade() {

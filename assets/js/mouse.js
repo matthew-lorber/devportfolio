@@ -1,15 +1,22 @@
-/* MOUSE POINTER -- P5.JS */
-
+// mouse following circle done in P5.js
 let x = 1;
 let y = 1;
 let easing = 0.05;
 
-setup = ()=> createCanvas(window.innerWidth,window.innerHeight);
+setup = ()=> createCanvas(windowWidth,windowHeight);
 
 draw = ()=> {
-    background(255);
+    clear();
+    noFill();
     x += (mouseX - x) * easing;
     y += (mouseY - y) * easing;
-    stroke(0);
+    smooth();
+    stroke(255);
     ellipse(x, y, 50, 50);
 }
+
+// mouse coordinate display in jQuery 3.4.1
+$('body').mousemove(()=>{
+    $('#mx').html(mouseX);
+    $('#my').html(mouseY);
+})
