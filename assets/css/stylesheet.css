@@ -1,3 +1,7 @@
+@font-face {
+    font-family: arch;
+    src: url(../fonts/Architex.ttf);
+}
 body {
     display:flex;
     position:fixed;
@@ -35,9 +39,10 @@ body::-webkit-scrollbar {
 .expression {
     display:none;
     font-size:8rem;
-    color:#181818;
+    color:#fff;
     background:none;
     transform-origin:center center;
+    opacity:0.1;
 }
 section {
     display:flex;
@@ -141,8 +146,8 @@ canvas {
     position:fixed;
     width:fit-content;
     height:fit-content;
-    bottom:0;
-    left:1rem;
+    bottom:-1rem;
+    left:0rem;
     transform-origin:center center;
     transform-box:fill-box;
     z-index:1002;
@@ -151,6 +156,34 @@ canvas {
     width:6.87066px;
     height:6.87066px;
     opacity:0.2;
+}
+.fall {
+    position:fixed;
+    bottom:0;
+    left:-100vh;
+    transform-origin:bottom right;
+    width:100vh;
+    height:100vw;
+}
+#me {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index:1020;
+    color:#fff;
+    opacity:0.8;
+    font-family:arch;
+    font-weight:500;
+    font-size:2.75rem;
+}
+#im {
+    display:none;
 }
 /* responsive design */
 /* @media screen and (min-width: 700px) {

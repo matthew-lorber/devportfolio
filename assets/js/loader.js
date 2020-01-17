@@ -26,7 +26,10 @@ tl
 .add({
     targets:"#cartesian",
     opacity:0,
-    complete:()=> tL1()
+    complete:()=> {
+        tL1();
+        return false;
+    }
 });
 
 function tL1() {
@@ -34,7 +37,11 @@ function tL1() {
     $("#graphPaper").fadeToggle(1000);
     window.setTimeout(()=>{$(".nav").fadeToggle(1000);updateNavs()},1000);
     window.setTimeout(()=>{$(".expression").fadeToggle(1000);},2000);
-    window.setTimeout(()=>{$("#layout").fadeToggle(1000);tL2()},3000);
+    window.setTimeout(()=>{
+        $("#layout").fadeToggle(1000);
+        tL2()
+    },3000);
+    return false;
 }
 
 function tL2() {
@@ -44,17 +51,23 @@ function tL2() {
     tl
     .add({
         targets: '#r-1',
-        duration:1000,
-        opacity:[0.2,0.8,0.2,0.8,0.2,0.8,0.6],
+        duration:3000,
+        opacity:[0.2,0.8,0.2,0.8,0.2,0.8,0.2,0.6],
     })
     .add({
         targets:'#layout',
         rotateZ:-45,
         rotateY:-45,
-        rotateX:-25
-    })
+        rotateX:-25,
+        complete: ()=> greeting()
+    },'-=1000');
+    return false;
 }
 
+function greeting() {
+    $("#me").fadeToggle(1000);
+    window.setTimeout(()=>{$("#im").fadeToggle(1000)},1500);
+}
 function cascade() {
     let vh = window.innerHeight;
     let vw = window.innerWidth;
@@ -77,24 +90,20 @@ function cascade() {
         duration: 1000,
         direction: 'forward',
         delay: anime.stagger(100),
-        rotate: 90,
-        complete: ()=> {
-            $('body').css('background','orange');
-        }
+        rotate: 90
     })
     .add({
         targets: '.fall',
         width:vh,
         height:vw,
-        translateX: vh,
-        rotate: -90,
+        translateX:vh,
+        rotate:-90,
         delay: anime.stagger(50, {direction: 'reverse'})
     })
     .add({
         targets: '#me',
         opacity:[0,1],
         complete: function() {
-            // 
             $('#hello').fadeToggle(1000);
             window.setTimeout(()=> {
                 anime({
