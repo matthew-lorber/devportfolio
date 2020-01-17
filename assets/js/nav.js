@@ -2,30 +2,10 @@ let i = 0, j = 0;
 let vh = window.innerHeight;
 let vw = window.innerWidth;
 
-$(window).on("load", ()=>{
-    $("#layout").fadeToggle(50);
-    let tl = anime.timeline({
-        loop: false
-    });
-    tl
-    .add({
-        targets: '#r-1',
-        duration:1500,
-        opacity:[0.2,0.6,0.2,0.6,0.2,0.6],
-        easing: 'easeInOutSine'
-    })
-    .add({
-        targets:'#layout',
-        // rotateZ:-45,
-        // rotateY:-45,
-        // rotateX:-25,
-    })
-})
-
+// nav animations (4)
 $("#navU").click(()=>{
     j+=1;
     let tl = anime.timeline({
-        // easing: 'easeInOutSine',
         direction: 'forward',
         loop: false
     })
@@ -33,14 +13,14 @@ $("#navU").click(()=>{
     .add({
         targets: 'section',
         translateY: j*vh,
-        duration: 1000
+        duration: 1000,
+        // complete: ()=> updateNavs("u")
     })
 });
 
 $("#navD").click(()=>{
     j-=1;
     let tl = anime.timeline({
-        // easing: 'easeInOutSine',
         direction: 'forward',
         loop: false
     })
@@ -48,14 +28,14 @@ $("#navD").click(()=>{
     .add({
         targets: 'section',
         translateY: j*vh,
-        duration: 1000
+        duration: 1000,
+        // complete: ()=> updateNavs("d")
     })
 });
 
 $("#navL").click(()=>{
     i+=1;
     let tl = anime.timeline({
-        // easing: 'easeInOutSine',
         direction: 'forward',
         loop: false
     })
@@ -63,14 +43,14 @@ $("#navL").click(()=>{
     .add({
         targets: 'section',
         translateX: i*vw,
-        duration: 1000
+        duration: 1000,
+        // complete: ()=> updateNavs("l")
     })
 });
 
 $("#navR").click(()=>{
     i-=1;
     let tl = anime.timeline({
-        // easing: 'easeInOutSine',
         direction: 'forward',
         loop: false
     })
@@ -78,6 +58,16 @@ $("#navR").click(()=>{
     .add({
         targets: 'section',
         translateX: i*vw,
-        duration: 1000
+        duration: 1000,
+        // complete: ()=> updateNavs("r")
     })
 });
+
+function updateNavs(loc) {
+    switch (loc) {
+        case "u": 
+        case "d": $("#pageLoc").html("contact"); $(".nav").css("opacity","0"); $("#navD").css("opacity","1"); break;
+        case "l": break;
+        case "r": break;
+    }
+}

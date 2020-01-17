@@ -6,202 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Matt Lorber -- Full Stack Developer</title>
+    <link rel="shortcut icon" href="./favicon.png" />
+    <link rel="stylesheet" href="./assets/css/stylesheet.css"/>
 </head>
-<style>
-body {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:100vw;
-    height:200vh;
-    margin:0;
-    padding:0;
-    background:red;
-    scroll-snap-type: y mandatory;
-}
-body::-webkit-scrollbar {
-    display: none;
-}
-section {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:100vw;
-    height: 100vh;
-    scroll-snap-align: start;
-    overflow:hidden;
-    color:#181818;
-}
-#section-0 {
-    position:fixed;
-    top:0;
-    left:0;
-    background:#222;
-    /* color:#222;text-shadow: -1px -1px 1px #000; */
-}
-#section-1 {
-    position:fixed;
-    top:100vh;
-    left:0;
-    background:#bada55;
-}
-#section-2 {
-    position:fixed;
-    top:200vh;
-    left:0;
-    background:#123456;
-}
-#section-3 {
-    position:fixed;
-    top:-100vh;
-    left:0;
-    background:#a44353;
-}
-#section-4 {
-    position:fixed;
-    top:0;
-    left:100vw;
-    background:#bbb324;
-}
-#section-5 {
-    position:fixed;
-    top:0;
-    left:-100vw;
-    background:#badbed;
-}
-canvas {
-    position:fixed;
-    top:0;
-    left:0;
-    height:200vh;
-}
-.expression {
-    font-size:8rem;
-}
-.nav {
-    cursor:pointer;
-    z-index:1001;
-    filter:invert(1);
-}
-#navU {
-    position:fixed;
-    top:1rem;
-    left:50vw;
-}
-#navD {
-    position:fixed;
-    bottom:1rem;
-    left:50vw;
-}
-#navL {
-    position:fixed;
-    top:50vh;
-    left:1rem;
-}
-#navR {
-    position:fixed;
-    top:50vh;
-    right:1rem;
-}
-#now {
-    position:fixed;
-    top:1rem;
-    right:1rem;
-    width:fit-content;
-    z-index:1005;
-    color:white;
-    opacity:0.5;
-    font-size:0.7rem;
-}
-#flock {
-    position:fixed;
-    top:25vh;
-    left:25vw;
-    z-index:1011;
-    opacity:0.5;
-}
-.flockParticle {
-    position:absolute;
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:green;
-}
-#cartesian {
-    display:flex;
-    position:fixed;
-    justify-content:center;
-    align-items:center;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    z-index:1000;
-}
-#coord {
-    user-select:none;
-    position:fixed;
-    bottom:1rem;
-    right:1rem;
-    color:white;
-    opacity:0.5;
-    z-index:1000;
-    font-size:0.7rem;
-}
-#layout {
-    display:none;
-    position:fixed;
-    width:fit-content;
-    height:fit-content;
-    bottom:1rem;
-    left:1rem;
-    transform-origin:center center;
-    transform-box:fill-box;
-    z-index:1002;
-}
-#layout rect {
-    width:6.87066px;
-    height:6.87066px;
-    opacity:0.2;
-}
-/* responsive design */
-@media screen and (min-width: 700px) {
-    body {
-        background:blue;
-    }
-}
-</style>
 <body>
+    <!-- graph -->
+    <div id="graphPaper"></div>
     <!-- nav buttons -->
     <div class="nav" id="navU"><img src="./assets/images/cU.png" alt="navigate button up"/></div>
     <div class="nav" id="navD"><img src="./assets/images/cD.png" alt="navigate button down"/></div>
     <div class="nav" id="navL"><img src="./assets/images/cL.png" alt="navigate button left"/></div>
     <div class="nav" id="navR"><img src="./assets/images/cR.png" alt="navigate button right"/></div>
-    <!-- particle flock -->
-    <div id="flock">
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-        <div class="flockParticle"></div>
-    </div>
-    <!-- Austin local time -->
-    <div id="now"></div>
     <!-- cartesian loader -->
     <div id="cartesian">
         <svg alt="xyz cartesian coordinate system animation" opacity="0.8" width="81.4mm" height="76.2mm" viewBox="0 0 81.4 76.2">
             <g transform="translate(-60.7 -97.6)">
-                <g transform="translate(-3.4 -8.32)" fill="none" stroke="#fff">
+                <g transform="translate(-3.4 -8.32)" fill="none" stroke="none">
                     <circle class="cp cpFill" cx="115" cy="118" r=".597"/>
                 </g>
-                <path class="cp" d="m89.8 150h47.1" fill="none" stroke="#fff" stroke-width=".465px"/>
-                <path class="cp" d="m89.8 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".465px"/>
-                <path class="cp" d="m89.8 150v-46.5h-0.368" fill="none" stroke="#fff" stroke-width=".465px"/>
+                <path class="cp" d="m89.8 150h47.1" fill="none" stroke="none" stroke-width=".465px"/>
+                <path class="cp" d="m89.8 150-23.4 19.1" fill="none" stroke="none" stroke-width=".465px"/>
+                <path class="cp" d="m89.8 150v-46.5h-0.368" fill="none" stroke="none" stroke-width=".465px"/>
 
-                <g fill="none" opacity=".7" stroke="#fff" stroke-width=".165">
+                <g fill="none" opacity=".7" stroke="none" stroke-width=".165">
                     <path class="cp" d="m136 101v48.2"/>
                     <path class="cp" d="m131 101v48.2"/>
                     <path class="cp" d="m125 102v48.2"/>
@@ -212,16 +39,16 @@ canvas {
                     <path class="cp" d="m99.6 102v48.2"/>
                     <path class="cp" d="m94.3 101v48.2"/>
                 </g>
-                <path class="cp" d="m89.7 104h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.8 109h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.9 115h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.5 119h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.7 125h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.4 130h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.8 135h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.9 140h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m90.1 145h47" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <g fill="none" opacity=".7" stroke="#fff" stroke-width=".165">
+                <path class="cp" d="m89.7 104h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.8 109h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.9 115h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.5 119h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 125h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.4 130h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.8 135h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.9 140h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m90.1 145h47" fill="none" stroke="none" stroke-width=".165px"/>
+                <g fill="none" opacity=".7" stroke="none" stroke-width=".165">
                     <path class="cp" d="m86.7 152h47.1"/>
                     <path class="cp" d="m83.5 155h47.1"/>
                     <path class="cp" d="m80.2 158h47.1"/>
@@ -230,41 +57,41 @@ canvas {
                     <path class="cp" d="m70 166h47.1"/>
                     <path class="cp" d="m66.4 169h47.1"/>
                 </g>
-                <path class="cp" d="m94.5 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m99.5 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m105 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m110 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m115 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m120 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m126 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m131 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m136 150-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m90 145-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.7 140-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.6 130-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.7 135-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.7 125-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.7 119-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.6 115-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.5 109-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m89.7 104-23.4 19.1" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m66.4 122v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m70.2 119v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m73.6 116v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m76.8 113v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m80.3 110v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m83.4 108v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <path class="cp" d="m86.7 105v47.3" fill="none" stroke="#fff" stroke-width=".165px"/>
-                <g transform="translate(3.97 1.51)" fill="none" stroke="#fff" stroke-width=".188" aria-label="x">
-                    <path class="cp cpFill" d="m59.3 168q0.179 0.19 0.271 0.381 0.0659 0.132 0.216 0.692l0.322-0.483q0.128-0.176 0.311-0.333 0.183-0.161 0.322-0.22 0.0879-0.0366 0.194-0.0366 0.157 0 0.249 0.0842 0.0952 0.0842 0.0952 0.205 0 0.139-0.0549 0.19-0.103 0.0916-0.234 0.0916-0.0769 0-0.165-0.033-0.172-0.0586-0.231-0.0586-0.0879 0-0.209 0.103-0.227 0.19-0.542 0.736l0.3 1.26q0.0696 0.289 0.117 0.348 0.0476 0.0549 0.0952 0.0549 0.0769 0 0.179-0.0842 0.201-0.168 0.344-0.44l0.128 0.0659q-0.231 0.432-0.586 0.718-0.201 0.161-0.341 0.161-0.205 0-0.326-0.231-0.0769-0.143-0.319-1.23-0.571 0.993-0.916 1.28-0.223 0.183-0.432 0.183-0.147 0-0.267-0.106-0.0879-0.0806-0.0879-0.216 0-0.121 0.0806-0.201 0.0806-0.0806 0.198-0.0806t0.249 0.117q0.0952 0.0842 0.147 0.0842 0.044 0 0.114-0.0586 0.172-0.139 0.469-0.601 0.297-0.462 0.388-0.667-0.227-0.89-0.245-0.941-0.0842-0.238-0.22-0.337-0.136-0.0989-0.399-0.0989-0.0842 0-0.194 7e-3v-0.132z" stroke="#fff" stroke-width=".188" />
+                <path class="cp" d="m94.5 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m99.5 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m105 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m110 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m115 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m120 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m126 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m131 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m136 150-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m90 145-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 140-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.6 130-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 135-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 125-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 119-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.6 115-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.5 109-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m89.7 104-23.4 19.1" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m66.4 122v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m70.2 119v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m73.6 116v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m76.8 113v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m80.3 110v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m83.4 108v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <path class="cp" d="m86.7 105v47.3" fill="none" stroke="none" stroke-width=".165px"/>
+                <g transform="translate(3.97 1.51)" fill="none" stroke="none" stroke-width=".188" aria-label="x">
+                    <path class="cp cpFill" d="m59.3 168q0.179 0.19 0.271 0.381 0.0659 0.132 0.216 0.692l0.322-0.483q0.128-0.176 0.311-0.333 0.183-0.161 0.322-0.22 0.0879-0.0366 0.194-0.0366 0.157 0 0.249 0.0842 0.0952 0.0842 0.0952 0.205 0 0.139-0.0549 0.19-0.103 0.0916-0.234 0.0916-0.0769 0-0.165-0.033-0.172-0.0586-0.231-0.0586-0.0879 0-0.209 0.103-0.227 0.19-0.542 0.736l0.3 1.26q0.0696 0.289 0.117 0.348 0.0476 0.0549 0.0952 0.0549 0.0769 0 0.179-0.0842 0.201-0.168 0.344-0.44l0.128 0.0659q-0.231 0.432-0.586 0.718-0.201 0.161-0.341 0.161-0.205 0-0.326-0.231-0.0769-0.143-0.319-1.23-0.571 0.993-0.916 1.28-0.223 0.183-0.432 0.183-0.147 0-0.267-0.106-0.0879-0.0806-0.0879-0.216 0-0.121 0.0806-0.201 0.0806-0.0806 0.198-0.0806t0.249 0.117q0.0952 0.0842 0.147 0.0842 0.044 0 0.114-0.0586 0.172-0.139 0.469-0.601 0.297-0.462 0.388-0.667-0.227-0.89-0.245-0.941-0.0842-0.238-0.22-0.337-0.136-0.0989-0.399-0.0989-0.0842 0-0.194 7e-3v-0.132z" stroke="none" stroke-width=".188" />
                 </g>
-                <g fill="none" stroke="#fff" stroke-width=".188" aria-label="z">
-                    <path class="cp cpFill" d="m89.2 98.6h2.33v0.0916l-2.53 2.64h1.07q0.381 0 0.483-0.0293t0.187-0.125q0.0879-0.0952 0.194-0.344h0.136l-0.319 0.996h-2.38v-0.106l2.53-2.64h-1.05q-0.333 0-0.403 0.0183-0.103 0.022-0.205 0.117-0.0989 0.0916-0.205 0.308h-0.139z" fill="none" stroke="#fff" stroke-width=".188"/>
+                <g fill="none" stroke="none" stroke-width=".188" aria-label="z">
+                    <path class="cp cpFill" d="m89.2 98.6h2.33v0.0916l-2.53 2.64h1.07q0.381 0 0.483-0.0293t0.187-0.125q0.0879-0.0952 0.194-0.344h0.136l-0.319 0.996h-2.38v-0.106l2.53-2.64h-1.05q-0.333 0-0.403 0.0183-0.103 0.022-0.205 0.117-0.0989 0.0916-0.205 0.308h-0.139z" fill="none" stroke="none" stroke-width=".188"/>
                 </g>
-                <g fill="none" stroke="#fff" stroke-width=".188" aria-label="y">
-                    <path class="cp cpFill" d="m139 147q0.125 0.212 0.172 0.399 0.0476 0.183 0.0952 0.725l0.161 1.8q0.22-0.264 0.637-0.835 0.201-0.278 0.498-0.758 0.179-0.293 0.22-0.41 0.022-0.0586 0.022-0.121 0-0.0403-0.0256-0.0659t-0.136-0.0586q-0.106-0.0366-0.179-0.128-0.0696-0.0952-0.0696-0.216 0-0.15 0.0879-0.242 0.0879-0.0916 0.22-0.0916 0.161 0 0.275 0.136 0.114 0.132 0.114 0.366 0 0.289-0.198 0.663-0.198 0.37-0.762 1.14-0.564 0.769-1.37 1.68-0.553 0.626-0.82 0.787-0.267 0.165-0.458 0.165-0.114 0-0.198-0.0879-0.0879-0.0842-0.0879-0.198 0-0.143 0.121-0.26 0.117-0.117 0.256-0.117 0.0733 0 0.121 0.033 0.0293 0.0183 0.0659 0.103 0.033 0.0879 0.0623 0.117 0.0183 0.0183 0.0439 0.0183 0.022 0 0.0769-0.0366 0.201-0.125 0.469-0.396 0.352-0.359 0.52-0.586l-0.205-2.32q-0.0513-0.575-0.154-0.7-0.103-0.125-0.344-0.125-0.0769 0-0.275 0.022l-0.033-0.136z" fill="none" stroke="#fff" stroke-width=".188"/>
+                <g fill="none" stroke="none" stroke-width=".188" aria-label="y">
+                    <path class="cp cpFill" d="m139 147q0.125 0.212 0.172 0.399 0.0476 0.183 0.0952 0.725l0.161 1.8q0.22-0.264 0.637-0.835 0.201-0.278 0.498-0.758 0.179-0.293 0.22-0.41 0.022-0.0586 0.022-0.121 0-0.0403-0.0256-0.0659t-0.136-0.0586q-0.106-0.0366-0.179-0.128-0.0696-0.0952-0.0696-0.216 0-0.15 0.0879-0.242 0.0879-0.0916 0.22-0.0916 0.161 0 0.275 0.136 0.114 0.132 0.114 0.366 0 0.289-0.198 0.663-0.198 0.37-0.762 1.14-0.564 0.769-1.37 1.68-0.553 0.626-0.82 0.787-0.267 0.165-0.458 0.165-0.114 0-0.198-0.0879-0.0879-0.0842-0.0879-0.198 0-0.143 0.121-0.26 0.117-0.117 0.256-0.117 0.0733 0 0.121 0.033 0.0293 0.0183 0.0659 0.103 0.033 0.0879 0.0623 0.117 0.0183 0.0183 0.0439 0.0183 0.022 0 0.0769-0.0366 0.201-0.125 0.469-0.396 0.352-0.359 0.52-0.586l-0.205-2.32q-0.0513-0.575-0.154-0.7-0.103-0.125-0.344-0.125-0.0769 0-0.275 0.022l-0.033-0.136z" fill="none" stroke="none" stroke-width=".188"/>
                 </g>
-                <g fill="none" stroke="#fff" stroke-width=".171" aria-label="(r,θ,φ)">
+                <g fill="none" stroke="none" stroke-width=".171" aria-label="(r,θ,φ)">
                     <path class="cp cpFill" d="m114 112-0.113 0.0534q-0.397-0.758-0.571-1.34-0.134-0.454-0.134-0.915 0-1.07 0.497-1.93 0.611-1.04 1.98-2.03l0.0801 0.117q-0.617 0.457-1.01 1.02-0.487 0.708-0.798 1.71t-0.31 1.82q0 0.627 0.377 1.48z"/>
                     <path class="cp cpFill" d="m115 108 1.15-0.187-0.481 1.62q0.584-0.998 1.06-1.4 0.27-0.227 0.441-0.227 0.11 0 0.174 0.0667 0.0634 0.0634 0.0634 0.187 0 0.22-0.113 0.421-0.0801 0.15-0.23 0.15-0.0768 0-0.134-0.0501-0.0534-0.0501-0.0667-0.154-7e-3 -0.0634-0.03-0.0834-0.0267-0.0267-0.0634-0.0267-0.0567 0-0.107 0.0267-0.0868 0.0467-0.264 0.26-0.277 0.327-0.601 0.848-0.14 0.22-0.24 0.497-0.14 0.38-0.16 0.457l-0.107 0.421h-0.511l0.617-2.07q0.107-0.36 0.107-0.514 0-0.0601-0.0501-0.1-0.0668-0.0534-0.177-0.0534-0.0701 0-0.257 0.03z"/>
                     <path class="cp cpFill" d="m116 111q0.25-0.113 0.407-0.287 0.12-0.134 0.12-0.257 0-0.0601-0.02-0.11-0.0134-0.0267-0.0935-0.107t-0.0901-0.11q-0.0234-0.0567-0.0234-0.13 0-0.144 0.0968-0.247 0.1-0.103 0.234-0.103 0.137 0 0.24 0.11 0.107 0.11 0.107 0.277 0 0.297-0.234 0.601-0.234 0.304-0.678 0.471z"/>
@@ -273,25 +100,26 @@ canvas {
                     <path class="cp cpFill" d="m124 112h-0.34l0.404-1.38q-0.484-3e-3 -0.751-0.29-0.264-0.29-0.264-0.794 0-0.768 0.477-1.38 0.477-0.614 1.19-0.634l-0.0367 0.12q-0.447 0.0734-0.781 0.731-0.33 0.658-0.33 1.29 0 0.761 0.541 0.784l0.451-1.49q0.17-0.577 0.307-0.858 0.137-0.284 0.337-0.427 0.2-0.147 0.427-0.147 0.32 0 0.497 0.274 0.177 0.27 0.177 0.718 0 0.808-0.501 1.45-0.497 0.634-1.42 0.668zm0.451-1.56q0.668-0.0434 1.03-0.691 0.364-0.651 0.364-1.33 0-0.577-0.294-0.577-0.177 0-0.317 0.214-0.14 0.214-0.364 0.971z"/>
                     <path class="cp cpFill" d="m128 106 0.113-0.0634q0.397 0.754 0.567 1.34 0.137 0.454 0.137 0.915 0 1.08-0.497 1.93-0.614 1.04-1.98 2.03l-0.0801-0.103q0.617-0.461 1.01-1.02 0.487-0.708 0.798-1.71 0.31-1 0.31-1.83 0-0.627-0.377-1.48z"/>
                 </g>
-                <g fill="none" stroke="#fff" stroke-width=".188" class="cpFill" aria-label="r">
-                    <path class="cp cpFill" d="m98.6 124 1.26-0.205-0.527 1.78q0.641-1.1 1.16-1.53 0.297-0.249 0.483-0.249 0.121 0 0.19 0.0733 0.0696 0.0696 0.0696 0.205 0 0.242-0.125 0.462-0.0879 0.165-0.253 0.165-0.0842 0-0.147-0.0549-0.0586-0.055-0.0733-0.168-7e-3 -0.0696-0.033-0.0916-0.0293-0.0293-0.0696-0.0293-0.0623 0-0.117 0.0293-0.0952 0.0513-0.289 0.286-0.304 0.359-0.659 0.93-0.154 0.242-0.264 0.546-0.154 0.418-0.176 0.502l-0.117 0.462h-0.56l0.678-2.27q0.117-0.396 0.117-0.564 0-0.0659-0.0549-0.11-0.0732-0.0586-0.194-0.0586-0.0769 0-0.282 0.033z" fill="none" stroke="#fff" stroke-width=".188"/>
+                <g fill="none" stroke="none" stroke-width=".188" class="cpFill" aria-label="r">
+                    <path class="cp cpFill" d="m98.6 124 1.26-0.205-0.527 1.78q0.641-1.1 1.16-1.53 0.297-0.249 0.483-0.249 0.121 0 0.19 0.0733 0.0696 0.0696 0.0696 0.205 0 0.242-0.125 0.462-0.0879 0.165-0.253 0.165-0.0842 0-0.147-0.0549-0.0586-0.055-0.0733-0.168-7e-3 -0.0696-0.033-0.0916-0.0293-0.0293-0.0696-0.0293-0.0623 0-0.117 0.0293-0.0952 0.0513-0.289 0.286-0.304 0.359-0.659 0.93-0.154 0.242-0.264 0.546-0.154 0.418-0.176 0.502l-0.117 0.462h-0.56l0.678-2.27q0.117-0.396 0.117-0.564 0-0.0659-0.0549-0.11-0.0732-0.0586-0.194-0.0586-0.0769 0-0.282 0.033z" fill="none" stroke="none" stroke-width=".188"/>
                 </g>
-                <g fill="none" stroke="#fff" stroke-width=".154" aria-label="θ">
-                    <path class="cp cpFill" d="m93.4 132q0.837 0 0.837 1.15 0 0.692-0.34 1.53-0.337 0.84-0.773 1.25-0.433 0.415-0.894 0.415-0.376 0-0.614-0.319-0.235-0.322-0.235-0.8 0-0.307 0.135-0.849 0.135-0.542 0.406-1.09 0.271-0.554 0.677-0.921 0.409-0.37 0.8-0.37zm0.187 2.05q0.202-0.635 0.202-1.23 0-0.686-0.388-0.686-0.34 0-0.668 0.515-0.328 0.512-0.602 1.41zm-1.51 0.172q-0.277 0.864-0.277 1.32 0 0.301 0.123 0.494 0.123 0.19 0.367 0.19 0.202 0 0.379-0.159 0.178-0.162 0.415-0.656 0.238-0.494 0.448-1.19z" fill="none" stroke="#fff" stroke-width=".154"/>
+                <g fill="none" stroke="none" stroke-width=".154" aria-label="θ">
+                    <path class="cp cpFill" d="m93.4 132q0.837 0 0.837 1.15 0 0.692-0.34 1.53-0.337 0.84-0.773 1.25-0.433 0.415-0.894 0.415-0.376 0-0.614-0.319-0.235-0.322-0.235-0.8 0-0.307 0.135-0.849 0.135-0.542 0.406-1.09 0.271-0.554 0.677-0.921 0.409-0.37 0.8-0.37zm0.187 2.05q0.202-0.635 0.202-1.23 0-0.686-0.388-0.686-0.34 0-0.668 0.515-0.328 0.512-0.602 1.41zm-1.51 0.172q-0.277 0.864-0.277 1.32 0 0.301 0.123 0.494 0.123 0.19 0.367 0.19 0.202 0 0.379-0.159 0.178-0.162 0.415-0.656 0.238-0.494 0.448-1.19z" fill="none" stroke="none" stroke-width=".154"/>
                 </g>
                 <text x="20.599701" y="115.76041" fill="#000000" font-family="sans-serif" font-size="10.6px" letter-spacing="0px" stroke-width=".265" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="20.599701" y="125.12418" stroke-width=".265"/></text>
-                <g fill="none" stroke="#fff" stroke-width=".188" aria-label="φ">
-                    <path class="cp cpFill" d="m88.4 159h-0.374l0.443-1.52q-0.531-4e-3 -0.824-0.319-0.289-0.319-0.289-0.872 0-0.842 0.524-1.52t1.31-0.696l-0.0403 0.132q-0.491 0.0806-0.857 0.802-0.363 0.722-0.363 1.41 0 0.835 0.593 0.861l0.494-1.64q0.187-0.634 0.337-0.941 0.15-0.311 0.37-0.469 0.22-0.161 0.469-0.161 0.352 0 0.546 0.3 0.194 0.297 0.194 0.787 0 0.886-0.549 1.59-0.546 0.696-1.55 0.733zm0.494-1.71q0.733-0.0476 1.13-0.758 0.399-0.714 0.399-1.46 0-0.634-0.322-0.634-0.194 0-0.348 0.234-0.154 0.234-0.399 1.07z" fill="none" stroke="#fff" stroke-width=".188"/>
+                <g fill="none" stroke="none" stroke-width=".188" aria-label="φ">
+                    <path class="cp cpFill" d="m88.4 159h-0.374l0.443-1.52q-0.531-4e-3 -0.824-0.319-0.289-0.319-0.289-0.872 0-0.842 0.524-1.52t1.31-0.696l-0.0403 0.132q-0.491 0.0806-0.857 0.802-0.363 0.722-0.363 1.41 0 0.835 0.593 0.861l0.494-1.64q0.187-0.634 0.337-0.941 0.15-0.311 0.37-0.469 0.22-0.161 0.469-0.161 0.352 0 0.546 0.3 0.194 0.297 0.194 0.787 0 0.886-0.549 1.59-0.546 0.696-1.55 0.733zm0.494-1.71q0.733-0.0476 1.13-0.758 0.399-0.714 0.399-1.46 0-0.634-0.322-0.634-0.194 0-0.348 0.234-0.154 0.234-0.399 1.07z" fill="none" stroke="none" stroke-width=".188"/>
                 </g>
-                <g transform="translate(-3.4 -8.32)" fill="none" stroke="#fff">
-                    <path class="cp" d="m93.1 158 21.4 16.8v-56.5z" stroke="#fff" stroke-width=".365"/>
+                <g transform="translate(-3.4 -8.32)" fill="none" stroke="none">
+                    <path class="cp" d="m93.1 158 21.4 16.8v-56.5z" stroke="none" stroke-width=".365"/>
                 </g>
-                <path class="cp" d="m89.9 136c2 1.93 3.26 3.97 4.01 6.08" fill="none" stroke="#fff" stroke-width=".365px"/>
-                <path class="cp" d="m93.6 153c-2.64 0.565-5.2 0.785-7.48-0.0668" fill="none" stroke="#fff" stroke-width=".365px"/>
+                <path class="cp" d="m89.9 136c2 1.93 3.26 3.97 4.01 6.08" fill="none" stroke="none" stroke-width=".365px"/>
+                <path class="cp" d="m93.6 153c-2.64 0.565-5.2 0.785-7.48-0.0668" fill="none" stroke="none" stroke-width=".365px"/>
             </g>
         your browser or reader doesn't support SVG</svg>
     </div>
     <!-- location -->
+    <div id="pageLoc" display="none">home</div>
     <div id="layout">
         <svg width="17.7228mm" height="17.7226mm" version="1.1" viewBox="0 0 17.7228 17.7226" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(-75.973 -172.646)">
@@ -301,9 +129,9 @@ canvas {
                     <rect id="r-2" x="46.5352" y="105.418"/>
                     <rect id="r-3" x="32.7939" y="105.418"/>
                     <rect id="r-4" x="39.6645" y="112.289"/>
-                    <rect id="r-5" x="39.6645" y="119.159"/>
+                    <!-- <rect id="r-5" x="39.6645" y="119.159"/>
                     <rect id="r-6" x="25.9232" y="105.418"/>
-                    <rect id="r-7" x="32.7939" y="112.289"/>
+                    <rect id="r-7" x="32.7939" y="112.289"/> -->
                 </g>
             </g>
         </svg>
@@ -311,12 +139,11 @@ canvas {
     <!-- mouse xy coordinates -->
     <div id="coord">( <span id="mx">0</span> , <span id="my">0</span> )</div>
     <!-- section backgrounds -->
-    <section id="section-0"><span class="expression">section-0</span></section>
-    <section id="section-1"><span class="expression">section-1</span></section>
-    <section id="section-2"><span class="expression">section-2</span></section>
-    <section id="section-3"><span class="expression">section-3</span></section>
-    <section id="section-4"><span class="expression">section-4</span></section>
-    <section id="section-5"><span class="expression">section-5</span></section>
+    <section id="section-0" class="parallax"><span class="expression">home</section>
+    <section id="section-1" class="parallax"><span class="expression">contact</section>
+    <section id="section-3" class="parallax"><span class="expression">about</section>
+    <section id="section-4" class="parallax"><span class="expression">work</section>
+    <section id="section-5" class="parallax"><span class="expression">featured</section>
     <!-- javascript -->
     <script src="./assets/js/jquery.3.4.1.min.js"></script>
     <script src="./assets/js/anime.min.js"></script>

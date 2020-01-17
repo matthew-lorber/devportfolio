@@ -1,52 +1,59 @@
 /* PAGE LOADER */
-// gets & writes date to window
-$("#now").html(new Date(Date.now()).toLocaleDateString("en-US"));
-
-// runs flock animation NEED MORE COWBELL -=== RANDOM ANIMATION
-anime({
-    targets: '#flock',
-    duration: 5000, // should make this an ease like the mouse follow
-    easing: 'easeInOutSine',
-    left: ()=> {return Math.floor(Math.random() * 1 * window.innerWidth)},
-    top: ()=> {return Math.floor(Math.random() * 1 * window.innerHeight)},
-    loop:true
-})
-anime({
-    targets: '.flockParticle',
-    translateX:()=> {return anime.random(-50,50)},
-    translateY:()=> {return anime.random(-50,50)},
-    rotate:()=> {return anime.random(90,180)},
-    scale:()=> {return anime.random(0.5,3)},
-    loop:true
-})
 
 // runs cartesian animation
-$(window).on('load',function() {
-    let tl = anime.timeline({
-        easing: 'easeInOutSine',
-        delay: anime.stagger(40),
-        direction: 'alternate',
-        loop:2
-    });
+let tl = anime.timeline({
+    easing: 'easeInOutSine'
+});
 
+tl
+.add({
+    targets:'.cp',
+    stroke:'#fff',
+    duration:50
+})
+.add({
+    targets: '.cp',
+    strokeDashoffset: [anime.setDashoffset, 0],
+    duration:1200,
+    delay: anime.stagger(40)
+})
+.add({
+    targets:'.cpFill',
+    fill:'#fff',
+    duration:700,
+    easing:'easeInSine',
+},'-=1000')
+.add({
+    targets:"#cartesian",
+    opacity:0,
+    complete:()=> tL1()
+});
+
+function tL1() {
+    $("#cartesian").remove();
+    $("#graphPaper").fadeToggle(1000);
+    window.setTimeout(()=>{$(".nav").fadeToggle(1000);updateNavs()},1000);
+    window.setTimeout(()=>{$(".expression").fadeToggle(1000);},2000);
+    window.setTimeout(()=>{$("#layout").fadeToggle(1000);tL2()},3000);
+}
+
+function tL2() {
+    let tl = anime.timeline({
+        easing: 'easeInOutSine'
+    });
     tl
     .add({
-        targets: '.cp',
-        strokeDashoffset: [anime.setDashoffset, 0],
-        duration:1500,
+        targets: '#r-1',
+        duration:1000,
+        opacity:[0.2,0.8,0.2,0.8,0.2,0.8,0.6],
     })
     .add({
-        targets:'.cpFill',
-        fill:'#fff',
-        duration:700,
-        easing:'easeInSine'
-    },'-=1200')
-    .add({
-        targets: '.cp',
-        duration:1500
+        targets:'#layout',
+        rotateZ:-45,
+        rotateY:-45,
+        rotateX:-25
     })
-})
-
+}
 
 function cascade() {
     let vh = window.innerHeight;
@@ -137,16 +144,3 @@ function cascade() {
         }
     },'-=1500')
 }
-
-// function pppp() {
-//     createCanvas(window.innerWidth,window.innerHeight);
-// }
-
-// function draw() {
-//     if (mouseIsPressed) {
-//       fill(0);
-//     } else {
-//       fill(255);
-//     }
-//     ellipse(mouseX, mouseY, 80, 80);
-//   }

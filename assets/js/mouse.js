@@ -2,9 +2,7 @@
 let x = 1;
 let y = 1;
 let easing = 0.05;
-
 setup = ()=> createCanvas(windowWidth,windowHeight);
-
 draw = ()=> {
     clear();
     noFill();
@@ -14,9 +12,8 @@ draw = ()=> {
     stroke(255);
     ellipse(x, y, 50, 50);
 }
-
-// mouse coordinate display in jQuery 3.4.1
-$('body').mousemove(()=>{
+// mouse coordinate display
+$('body').mousemove(function(e){
     $('#mx').html(Math.floor(mouseX));
     $('#my').html(Math.floor(mouseY));
-})
+});
