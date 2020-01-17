@@ -59,7 +59,7 @@ function tL2() {
         rotateZ:-45,
         rotateY:-45,
         rotateX:-25,
-        complete: ()=> greeting()
+        // complete: ()=> greeting()
     },'-=1000');
     return false;
 }
