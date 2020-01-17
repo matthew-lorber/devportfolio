@@ -1,7 +1,26 @@
 let i = 0, j = 0;
-let thisLoc = [i,j];
 let vh = window.innerHeight;
 let vw = window.innerWidth;
+
+$(window).on("load", ()=>{
+    $("#layout").fadeToggle(50);
+    let tl = anime.timeline({
+        loop: false
+    });
+    tl
+    .add({
+        targets: '#r-1',
+        duration:1500,
+        opacity:[0.2,0.6,0.2,0.6,0.2,0.6],
+        easing: 'easeInOutSine'
+    })
+    .add({
+        targets:'#layout',
+        // rotateZ:-45,
+        // rotateY:-45,
+        // rotateX:-25,
+    })
+})
 
 $("#navU").click(()=>{
     j+=1;
@@ -62,4 +81,3 @@ $("#navR").click(()=>{
         duration: 1000
     })
 });
-

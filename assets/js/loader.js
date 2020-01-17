@@ -1,4 +1,26 @@
 /* PAGE LOADER */
+// gets & writes date to window
+$("#now").html(new Date(Date.now()).toLocaleDateString("en-US"));
+
+// runs flock animation NEED MORE COWBELL -=== RANDOM ANIMATION
+anime({
+    targets: '#flock',
+    duration: 5000, // should make this an ease like the mouse follow
+    easing: 'easeInOutSine',
+    left: ()=> {return Math.floor(Math.random() * 1 * window.innerWidth)},
+    top: ()=> {return Math.floor(Math.random() * 1 * window.innerHeight)},
+    loop:true
+})
+anime({
+    targets: '.flockParticle',
+    translateX:()=> {return anime.random(-50,50)},
+    translateY:()=> {return anime.random(-50,50)},
+    rotate:()=> {return anime.random(90,180)},
+    scale:()=> {return anime.random(0.5,3)},
+    loop:true
+})
+
+// runs cartesian animation
 $(window).on('load',function() {
     let tl = anime.timeline({
         easing: 'easeInOutSine',

@@ -17,6 +17,6 @@ draw = ()=> {
 
 // mouse coordinate display in jQuery 3.4.1
 $('body').mousemove(()=>{
-    $('#mx').html(mouseX);
-    $('#my').html(mouseY);
+    $('#mx').html(Math.floor(mouseX));
+    $('#my').html(Math.floor(mouseY));
 })
