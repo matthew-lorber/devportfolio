@@ -5,12 +5,12 @@
 body {
     display:flex;
     position:fixed;
-    top:-200vw;
-    left:-300vh;
+    top:0;
+    left:0;
     justify-content:center;
     align-items:center;
-    width:600vw;
-    height:600vh;
+    width:100vw;
+    height:100vh;
     margin:0;
     padding:0;  
     background: #222;
@@ -18,26 +18,47 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+:root {
+    --WW: 50vw;
+    --HH: 50vh;
+    --ww: calc(min(2.5vw,2.5vh));
+    --hh: calc(min(2.5vw,2.5vh));
+}
 #graphPaper {
-    display:none;
+    /* display:none; */
     position:fixed;
-    top:-200vw;
-    left:-300vh;
-    width:600vw;
-    height:600vh;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
     background: #222;
     background-image: 
         linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px),
         linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 200px 200px, 200px 200px, 20px 20px, 20px 20px;
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-size: var(--WW) var(--HH), var(--WW) var(--HH), var(--ww) var(--hh), var(--ww) var(--hh);
+    background-position: -2px -2px, -2px -2px, -1px 0px, -1px 0px;
     margin:0;
     padding:0;
 }
+#follower {
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100px;
+    height:100px;
+    border:1px solid rgba(0,0,0,0.1);
+}
+#mouseC {
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:1px solid white;
+}
 .expression {
-    display:none;
+    /* display:none; */
     font-size:8rem;
     color:#fff;
     background:none;
@@ -82,46 +103,43 @@ canvas {
     position:fixed;
     top:0;
     left:0;
-    height:200vh;
+    opacity:0.7;
 }
 .nav {
-    display:none;
+    /* display:none; */
     cursor:pointer;
     z-index:1001;
     filter:invert(1);
+    border:none;
+    padding:none;
 }
 #navU {
     position:fixed;
     top:1rem;
     left:50vw;
+    transform:translateX(-13px);
 }
 #navD {
     position:fixed;
     bottom:1rem;
     left:50vw;
+    transform:translateX(-13px);
 }
 #navL {
     position:fixed;
     top:50vh;
     left:1rem;
+    transform:translateY(-13px);
 }
 #navR {
     position:fixed;
     top:50vh;
     right:1rem;
-}
-#now {
-    position:fixed;
-    top:1rem;
-    right:1rem;
-    width:fit-content;
-    z-index:1005;
-    color:white;
-    opacity:0.5;
-    font-size:0.7rem;
+    transform:translateY(-13px);
 }
 #cartesian {
-    display:flex;
+    /* display:flex; */
+    display:none;
     position:fixed;
     justify-content:center;
     align-items:center;
@@ -142,7 +160,7 @@ canvas {
     font-size:0.7rem;
 }
 #layout {
-    display:none;
+    /* display:none; */
     position:fixed;
     width:fit-content;
     height:fit-content;
@@ -181,6 +199,20 @@ canvas {
     font-family:arch;
     font-weight:500;
     font-size:2.75rem;
+}
+#mail {
+    filter:brightness(0) invert(1);
+    width:300px;
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border-radius: 10px;
+    transition: 2s ease-out;
+    position: fixed;
+    transform-origin:center center;
+}
+canvas {
+    z-index:5;
 }
 #im {
     display:none;

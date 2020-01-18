@@ -1,19 +1,24 @@
-// mouse following circle done in P5.js
-let x = 1;
-let y = 1;
-let easing = 0.05;
-setup = ()=> createCanvas(windowWidth,windowHeight);
-draw = ()=> {
-    clear();
-    noFill();
-    x += (mouseX - x) * easing;
-    y += (mouseY - y) * easing;
-    smooth();
-    stroke(255);
-    ellipse(x, y, 50, 50);
+window.addEventListener("mousemove",getMouse); 
+const cc = {x:0, y:0};
+const mm = {x:0, y:0};
+setInterval(followMouse,15);
+
+function getMouse(e) {
+    mm.x = e.clientX;
+    mm.y = e.clientY;
+    $("#mx").html(mm.x); 
+    $("#my").html(mm.y);
 }
-// mouse coordinate display
-$('body').mousemove(function(e){
-    $('#mx').html(Math.floor(mouseX));
-    $('#my').html(Math.floor(mouseY));
-});
+
+function followMouse() {
+    const distX = mm.x - cc.x;
+    const distY = mm.y - cc.y;
+    cc.x += distX/25;
+    cc.y += distY/25;
+    $("#follower").css({left: cc.x - 50 + "px"}).css({top: cc.y - 50 + "px"});
+}
+
+window.addEventListener("mousedown",mousePop);
+function mousePop() {
+
+}
