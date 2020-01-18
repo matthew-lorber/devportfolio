@@ -57,6 +57,27 @@ body::-webkit-scrollbar {
     border-radius:50%;
     border:1px solid white;
 }
+.parallax-outer {
+    transform-style: preserve-3d;
+    perspective: 30px;
+}
+.parallax-inner-1 {
+    position:absolute;
+    color:#555;
+    opacity:0.6;
+    transform: translateZ(20px);
+    cursor:default;
+    z-index:1200;
+}
+.parallax-inner-2 {
+    position:absolute;
+    transform: translateX(20px) translateY(20px);
+    opacity:0.4;
+    z-index:1300;
+}
+.parallax-inner:hover {
+    transform: scale(1.2);
+}
 .expression {
     /* display:none; */
     font-size:8rem;
