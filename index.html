@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="all,follow">
     <title>Matt Lorber -- Full Stack Developer</title>
+    <link rel="canonical" href="https://matthew-lorber.github.io/devportfolio/" />
     <link rel="shortcut icon" href="./favicon.png" />
     <link rel="stylesheet" href="./assets/css/stylesheet.css"/>
 </head>
@@ -119,7 +121,7 @@
         your browser or reader doesn't support SVG</svg>
     </div>
     <!-- location -->
-    <div id="pageLoc" display="none">home</div>
+    <div id="pageLoc" style="display:none">home</div>
     <div id="layout">
         <svg width="17.7228mm" height="17.7226mm" version="1.1" viewBox="0 0 17.7228 17.7226" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(-75.973 -172.646)">
@@ -139,25 +141,47 @@
     <!-- mouse xy coordinates -->
     <div id="coord">( <span id="mx">0</span> , <span id="my">0</span> )</div>
     <!-- mouse follower -->
-    <div id="follower">
-        <span id="mouseC"></span>
-    </div>
+    <div id="follower"><span id="mouseC"></span></div>
+    <!-- scoreboard -->
+    <div id="scoreboard">SCORE: <span id="score">0</span><span> / 15</span></div>
+    <!-- animation -->
+    <div style="display:none"><div id="a0" class="anim0"></div>
+    <div id="a1" class="anim0"></div>
+    <div id="a2" class="anim0"></div></div style="display:none">
     <!-- section backgrounds -->
     <section id="section-0" class="parallax-outer">
         <span class="expression parallax-inner-1">ONE</span>
         <span class="expression parallax-inner-2">TWO</span>
     </section>
      <!-- TEMP STUFF -->
-    <div id="tempStuff" style="position:fixed;top:1rem;right:1rem">
+    <div id="tempStuff" style="position:fixed;top:1rem;right:1rem;display:none">
         <span style="color:white;font-size:2rem" id="thetaResult">0</span><span>____</span>
         <span style="color:white;font-size:2rem" id="pxResult">0</span><span>____</span>
         <span style="color:white;font-size:2rem" id="pyResult">0</span><span>____</span>
         <span style="color:white;font-size:2rem" id="rrResult">0</span><span>____</span>
     </div>
+    <div id="countdown" style="color:orange;font-size:2rem;position:fixed;top:1rem;left:1rem">0</div>
+    <!-- pages (sections) -->
     <section id="section-1" class="parallax-outer"><span class="expression parallax-inner-1">contact</span></section>
     <section id="section-3" class="parallax-outer"><span class="expression parallax-inner-1">about</section>
     <section id="section-4" class="parallax-outer"><span class="expression parallax-inner-1">work</section>
     <section id="section-5" class="parallax-outer"><span class="expression parallax-inner-1">featured</section>
+    <!-- my card -->
+    <div id="myCard" class="card">
+        <img src="./assets/images/4230281-128.png" alt="myAvatar" style="width:30%;margin:30%;opacity:0.4"/>
+        <div class="title">Matt Lorber</div>
+        <div class="subtitle1">Developer</div>
+        <div class="subtitle2">Rutgers University</div>
+        <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a> 
+            <a href="#"><i class="fa fa-twitter"></i></a>  
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+        <div><button class="expander">expand</button></div>
+        <div class="card xpand xpandL"></div>
+        <div class="card xpand xpandR"></div>
+    </div>
     <!-- elevator pitch -->
     <div class="fall"></div>
     <div class="fall"></div>
