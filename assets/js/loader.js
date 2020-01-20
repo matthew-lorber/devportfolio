@@ -1,8 +1,12 @@
 /* PAGE LOADER */
 $(window).on("load",function(){
-    // fireworks();    
+    // fireworks();
+    homeScreenSpinner();
 });
 
+function homeScreenSpinner() {
+    
+}
 
 
 
