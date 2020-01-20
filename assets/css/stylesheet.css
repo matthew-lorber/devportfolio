@@ -1,22 +1,50 @@
+/* FONT IMPORT */
 @font-face {
     font-family: "tangerine";
     src: url(../fonts/Tangerine-Regular.ttf);
 }
+/* VARIABLES */
 :root {
     --WW: 50vw;
     --HH: 50vh;
     --ww: calc(min(2.5vw,2.5vh));
     --hh: calc(min(2.5vw,2.5vh));
 }
+/* CSS RESETS */
+html, body, div, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav {
+	display: block;
+}
+/* STYLESHEET PROPER */
 body {
     display:flex;
     margin:0;
     padding:0;
     position:fixed;
-    top:-100vh;
-    left:-100vw;
-    width:300vw;
-    height:300vh;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
     overflow:hidden;
     justify-content:center;
     align-items:center;
@@ -28,11 +56,13 @@ body {
         linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
     background-size: var(--WW) var(--HH), var(--WW) var(--HH), var(--ww) var(--hh), var(--ww) var(--hh);
     background-position: -2px -2px, -2px -2px, -1px 0px, -1px 0px;
+    line-height:1;
 }
+/* DISABLE SCROLLBARS */
 body::-webkit-scrollbar {
     display: none;
 }
-/* MOUSE FOLLOWER mOut & mIn */
+/* MOUSE FOLLOWER */
 #mOut {
     position:fixed;
     display:flex;
@@ -52,43 +82,45 @@ body::-webkit-scrollbar {
     transition:1s ease-in-out;
     user-select:none;
 }
-/* PARALLAX */
-#test {
+h1,h2,h3,h4,h5,h6 {
+    
+    transition: transformScale 1s ease-in-out;
+}
+h1 {
     position:absolute;
     user-select:none;
     font-size:8rem;
     color:rgba(255,255,255,0.1);
-    z-index:10;
 }
-#test2 {
+h2 {
     position:absolute;
     user-select:none;
     font-size:4rem;
     color:rgba(255,255,255,0.2);
-    z-index:20;
 }
 h3 {
+    position:absolute;
+    user-select:none;
     font-size:3rem;
     color:rgba(255,255,255,0.1);
 }
 h4 {
+    position:absolute;
+    user-select:none;
     font-size:2rem;
     color:rgba(255,255,255,0.1);
 }
 h5 {
+    position:absolute;
+    user-select:none;
     font-size:1rem;
     color:rgba(255,255,255,0.1);
 }
 h6 {
+    position:absolute;
+    user-select:none;
     font-size:0.8rem;
     color:rgba(255,255,255,0.1);
-}
-#anim {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
 }
 section {
     display:flex;
@@ -97,7 +129,7 @@ section {
     width:100vw;
     height: 100vh;
     overflow:hidden;
-    transition: all 1s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 #section-0 {
     position:fixed;
@@ -156,6 +188,13 @@ section {
     right:1rem;
     transform:translateY(-13px);
 }
+#anim {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
 #cartesian {
     /* display:flex; */
     display:none;
@@ -178,6 +217,7 @@ section {
 }
 #scoreboard {
     position:fixed;
+    user-select:none;
     top:1rem;
     right:1rem;
     color:rgba(255,255,255,0.4);
