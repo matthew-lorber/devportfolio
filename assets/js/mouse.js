@@ -31,15 +31,13 @@ function parallaxFx() {
 };
 
 // MOUSEDOWN (SCALE)
-window.addEventListener("mousedown", mouseFx);
+window.addEventListener("mousedown", ()=> mouseFx());
 window.addEventListener("mouseup", ()=> restore());
 
 function mouseFx() {
-    $("#mIn").css("transform","scale(1.5)");
-    $("h1,h2").css("transform","scale(1.2)");
+    $("#mIn,section").css("transform","scale(1.5)");
 }
 
 restore = ()=> {
-    $("#mIn").css("transform","scale(1)");
-    $("h1,h2").css("transform","scale(1)");
+    $("#mIn,section").css("transform","scale(1)");
 }
