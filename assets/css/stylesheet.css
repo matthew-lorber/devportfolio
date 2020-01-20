@@ -1,4 +1,4 @@
-/* FONT IMPORT */
+/* FONTS */
 @font-face {
     font-family: "tangerine";
     src: url(../fonts/Tangerine-Regular.ttf);
@@ -11,19 +11,10 @@
     --hh: calc(min(2.5vw,2.5vh));
 }
 /* CSS RESETS */
-html, body, div, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html, body, div, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {
     margin: 0;
 	padding: 0;
 	border: 0;
@@ -35,7 +26,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav {
 	display: block;
 }
-/* STYLESHEET PROPER */
+/* BODY */
 body {
     display:flex;
     margin:0;
@@ -82,6 +73,7 @@ body::-webkit-scrollbar {
     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     user-select:none;
 }
+/* HEADINGS */
 h1 {
     position:absolute;
     user-select:none;
@@ -118,6 +110,7 @@ h6 {
     font-size:0.8rem;
     color:rgba(255,255,255,0.1);
 }
+/* SECTIONS */
 section {
     display:flex;
     justify-content:center;
@@ -152,6 +145,7 @@ section {
     top:0;
     left:-100vw;
 }
+/* NAVIGATION */
 .nav {
     user-select:none;
     cursor:pointer;
@@ -184,6 +178,26 @@ section {
     right:1rem;
     transform:translateY(-13px);
 }
+/* SCOREBOARD */
+#scoreboard {
+    position:fixed;
+    user-select:none;
+    top:1rem;
+    right:1rem;
+    color:rgba(255,255,255,0.4);
+    font-size:0.7rem;
+}
+/* XY COORDINATES */
+#coord {
+    position:fixed;
+    bottom:1rem;
+    right:1rem;
+    user-select:none;
+    color:rgba(255,255,255,0.4);
+    font-size:0.7rem;
+    z-index:0;
+}
+
 #anim {
     position:fixed;
     top:0;
@@ -201,23 +215,6 @@ section {
     left:0;
     width:100vw;
     height:100vh;
-}
-#coord {
-    position:fixed;
-    bottom:1rem;
-    right:1rem;
-    user-select:none;
-    color:rgba(255,255,255,0.4);
-    font-size:0.7rem;
-    z-index:0;
-}
-#scoreboard {
-    position:fixed;
-    user-select:none;
-    top:1rem;
-    right:1rem;
-    color:rgba(255,255,255,0.4);
-    font-size:0.7rem;
 }
 #layout rect {
     width:6.87066px;
@@ -345,53 +342,8 @@ button:active,
 button:focus {
     outline:none;
 }
-.bounce {
-    animation: 0.5s easeOutBounce;
-}
-@keyframes easeOutBounce {
-	0% {
-		transform: translateX(0%);
-	}
 
-	12% {
-		transform: translateX(-10.89%);
-	}
-
-	24% {
-		transform: translateX(-43.56%);
-	}
-
-	36% {
-		transform: translateX(-98.01%);
-	}
-
-	54% {
-		transform: translateX(-75.02%);
-	}
-
-	74% {
-		transform: translateX(-98.37%);
-	}
-
-	82% {
-		transform: translateX(-93.75%);
-	}
-
-	92% {
-		transform: translateX(-99.34%);
-	}
-
-	96% {
-		transform: translateX(-98.46%);
-	}
-
-	100% {
-		transform: translateX(-100%);
-	}
-
-}
-
-/* responsive design */
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 650px) {
     /* body {
         background:#386d9b;

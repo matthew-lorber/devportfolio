@@ -35,9 +35,11 @@ window.addEventListener("mousedown", ()=> mouseFx());
 window.addEventListener("mouseup", ()=> restore());
 
 function mouseFx() {
-    $("#mIn,section").css("transform","scale(1.5)");
+    if (!$(".nav:hover").length > 0) {
+        $("#mIn,section").css("transform","scale(1.5)");
+    }
 }
 
-restore = ()=> {
+function restore() {
     $("#mIn,section").css("transform","scale(1)");
 }
