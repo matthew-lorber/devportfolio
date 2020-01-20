@@ -1,3 +1,7 @@
+$(".nav").click(()=>{
+    $("section").css("transition","all 0s none");
+    window.setTimeout(()=>{$("section").css("transtition","all 1s ease-in-out")},1500);
+})
 let i = 0, j = 0;
 let vh = window.innerHeight;
 let vw = window.innerWidth;
@@ -14,7 +18,7 @@ $("#navU").click(()=>{
         targets: 'section',
         translateY: j*vh,
         duration: 1000,
-        // complete: ()=> updateNavs("u")
+        complete: ()=> $('body').css("transform-origin",j*vh)
     })
 });
 
@@ -29,7 +33,7 @@ $("#navD").click(()=>{
         targets: 'section',
         translateY: j*vh,
         duration: 1000,
-        // complete: ()=> updateNavs("d")
+        complete: ()=> $('body').css("transform-origin",j*vh)
     })
 });
 
@@ -44,7 +48,7 @@ $("#navL").click(()=>{
         targets: 'section',
         translateX: i*vw,
         duration: 1000,
-        // complete: ()=> updateNavs("l")
+        complete: ()=> $('body').css("transform-origin",i*vw)
     })
 });
 
@@ -59,15 +63,6 @@ $("#navR").click(()=>{
         targets: 'section',
         translateX: i*vw,
         duration: 1000,
-        // complete: ()=> updateNavs("r")
+        complete: ()=> $('body').css("transform-origin",i*vw)
     })
 });
-
-function updateNavs(loc) {
-    switch (loc) {
-        case "u": 
-        case "d": $("#pageLoc").html("contact"); $(".nav").css("opacity","0"); $("#navD").css("opacity","1"); break;
-        case "l": break;
-        case "r": break;
-    }
-}

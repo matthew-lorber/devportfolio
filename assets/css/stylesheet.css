@@ -1,22 +1,6 @@
 @font-face {
-    font-family: arch;
-    src: url(../fonts/Architex.ttf);
-}
-body {
-    display:flex;
-    position:fixed;
-    top:0;
-    left:0;
-    justify-content:center;
-    align-items:center;
-    width:100vw;
-    height:100vh;
-    margin:0;
-    padding:0;  
-    background: #222;
-}
-body::-webkit-scrollbar {
-    display: none;
+    font-family: "tangerine";
+    src: url(../fonts/Tangerine-Regular.ttf);
 }
 :root {
     --WW: 50vw;
@@ -24,13 +8,18 @@ body::-webkit-scrollbar {
     --ww: calc(min(2.5vw,2.5vh));
     --hh: calc(min(2.5vw,2.5vh));
 }
-#graphPaper {
-    /* display:none; */
+body {
+    display:flex;
+    margin:0;
+    padding:0;
     position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
+    top:-100vh;
+    left:-100vw;
+    width:300vw;
+    height:300vh;
+    overflow:hidden;
+    justify-content:center;
+    align-items:center;
     background: #222;
     background-image: 
         linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
@@ -39,11 +28,13 @@ body::-webkit-scrollbar {
         linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
     background-size: var(--WW) var(--HH), var(--WW) var(--HH), var(--ww) var(--hh), var(--ww) var(--hh);
     background-position: -2px -2px, -2px -2px, -1px 0px, -1px 0px;
-    margin:0;
-    padding:0;
 }
-#follower {
-    position:absolute;
+body::-webkit-scrollbar {
+    display: none;
+}
+/* MOUSE FOLLOWER mOut & mIn */
+#mOut {
+    position:fixed;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -51,74 +42,53 @@ body::-webkit-scrollbar {
     height:100px;
     border:1px solid rgba(0,0,0,0.1);
     opacity:0.7;
+    user-select:none;
 }
-#mouseC {
-    width:50px;
-    height:50px;
+#mIn {
+    width:40px;
+    height:40px;
     border-radius:50%;
     border:1px solid whitesmoke;
     transition:1s ease-in-out;
+    user-select:none;
 }
-#scoreboard {
-    position:fixed;
-    top:1rem;
-    right:1rem;
-    z-index:1000;
-    color:white;
-    opacity:0.5;
-    z-index:1000;
-    font-size:0.7rem;
-}
-.anim0 {
-    width:10px;
-    height:10px;
-    position:fixed;
-    border-radius:50%;
-    /* background:rgba(255,255,255,0.1); */
-    background:#fff;
-    opacity:0.3;
-    z-index:1200;
-}
-#a0 {
-    left:15vw;
-    top:15vw;
-}
-#a1 {
-    left:37vw;
-    top:42vw;
-}
-#a2 {
-    bottom:42vw;
-    right:24vw;
-}
-/* .parallax-outer {
-    transform-style: preserve-3d;
-    perspective: 30px;
-}
-.parallax-inner-1 {
+/* PARALLAX */
+#test {
     position:absolute;
-    color:#555;
-    opacity:0.6;
-    transform: translateZ(20px);
-    cursor:default;
-    z-index:1200;
-}
-.parallax-inner-2 {
-    position:absolute;
-    transform: translateX(20px) translateY(20px);
-    opacity:0.4;
-    z-index:1300;
-}
-.parallax-inner:hover {
-    transform: scale(1.2);
-} */
-.expression {
-    /* display:none; */
+    user-select:none;
     font-size:8rem;
-    color:#fff;
-    background:none;
-    transform-origin:center center;
-    opacity:0.1;
+    color:rgba(255,255,255,0.1);
+    z-index:10;
+}
+#test2 {
+    position:absolute;
+    user-select:none;
+    font-size:4rem;
+    color:rgba(255,255,255,0.2);
+    z-index:20;
+}
+h3 {
+    font-size:3rem;
+    color:rgba(255,255,255,0.1);
+}
+h4 {
+    font-size:2rem;
+    color:rgba(255,255,255,0.1);
+}
+h5 {
+    font-size:1rem;
+    color:rgba(255,255,255,0.1);
+}
+h6 {
+    font-size:0.8rem;
+    color:rgba(255,255,255,0.1);
+}
+#anim {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
 }
 section {
     display:flex;
@@ -126,13 +96,13 @@ section {
     align-items:center;
     width:100vw;
     height: 100vh;
-    scroll-snap-align: start;
     overflow:hidden;
+    transition: all 1s ease-in-out;
 }
 #section-0 {
     position:fixed;
     top:0;
-    left:0;color:blue;
+    left:0;
 }
 #section-1 {
     position:fixed;
@@ -154,19 +124,13 @@ section {
     top:0;
     left:-100vw;
 }
-canvas {
-    position:fixed;
-    top:0;
-    left:0;
-    opacity:0.7;
-}
 .nav {
-    /* display:none; */
+    user-select:none;
     cursor:pointer;
-    z-index:1001;
     filter:invert(1);
     border:none;
     padding:none;
+    opacity:0.7;
 }
 #navU {
     position:fixed;
@@ -202,28 +166,22 @@ canvas {
     left:0;
     width:100vw;
     height:100vh;
-    z-index:1000;
 }
 #coord {
-    user-select:none;
     position:fixed;
     bottom:1rem;
     right:1rem;
-    color:white;
-    opacity:0.5;
-    z-index:1000;
+    user-select:none;
+    color:rgba(255,255,255,0.4);
     font-size:0.7rem;
+    z-index:0;
 }
-#layout {
-    /* display:none; */
+#scoreboard {
     position:fixed;
-    width:fit-content;
-    height:fit-content;
-    bottom:-1rem;
-    left:0rem;
-    transform-origin:center center;
-    transform-box:fill-box;
-    z-index:1002;
+    top:1rem;
+    right:1rem;
+    color:rgba(255,255,255,0.4);
+    font-size:0.7rem;
 }
 #layout rect {
     width:6.87066px;
@@ -248,10 +206,8 @@ canvas {
     left:0;
     width:100vw;
     height:100vh;
-    z-index:1020;
     color:#fff;
     opacity:0.8;
-    font-family:arch;
     font-weight:500;
     font-size:2.75rem;
 }
@@ -266,14 +222,10 @@ canvas {
     position: fixed;
     transform-origin:center center;
 }
-canvas {
-    z-index:5;
-}
 #im {
     display:none;
 }
 .card {
-    font-family: arch;
     position:fixed;
     width:calc(min(40vw,40vh));
     height:80vh;
@@ -284,8 +236,30 @@ canvas {
     transition: transform 1s ease-in-out;
     margin: auto;
     text-align: center;
-    z-index:1300;
     color: rgba(255,255,255,0.6);
+}
+.dimH {
+    content:'';
+    position:absolute;
+    top:0;
+    left:calc(-1rem + 4px);
+    width:4px;
+    height:100%;
+    font-size:0.6rem;
+    writing-mode:vertical-lr;
+    font-weight:300;
+    color: rgba(255,255,255,0.4);
+}
+.dimW {
+    content:'';
+    position:absolute;
+    bottom:-4px;
+    left:0;
+    width:100%;
+    height:2px;
+    font-size:0.6rem;
+    font-weight:300;
+    color: rgba(255,255,255,0.4);
 }
 .title {
     font-size:2rem;
@@ -321,22 +295,22 @@ canvas {
     transform:rotateZ(0deg);
 }
 button {
+    width:45%;
+    height:100%;
+    border-radius:1rem;
     cursor:pointer;
-    font-family: arch;
-    font-size:1.3rem;
     font-weight:600;
     background: none;
     color: rgba(255,255,255,0.6);
     border: 1px solid rgba(255,255,255,0.6);
-    padding: 0.5rem 1.5rem 0.4rem 1.5rem;
-    z-index:2600;
+    padding-bottom:0.3rem;
 }
 button:active,
 button:focus {
     outline:none;
 }
-.expander {
-    z-index:2700;
+.bounce {
+    animation: 0.5s easeOutBounce;
 }
 @keyframes easeOutBounce {
 	0% {
