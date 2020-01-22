@@ -1,3 +1,7 @@
+@font-face {
+    font-family: gothic;
+    src: url(../fonts/DidactGothic-Regular.ttf);
+}
 /* VARIABLES */
 :root {
     --WW: 50vw;
@@ -61,6 +65,7 @@ body::-webkit-scrollbar {
     user-select:none;
 }
 #mIn {
+    display:none;
     width:40px;
     height:40px;
     border-radius:50%;
@@ -82,10 +87,12 @@ h2 {
     color:rgba(255,255,255,0.2);
 }
 h3 {
-    position:absolute;
+    font-family:gothic;
+    position:relative;
+    top:2rem;
     user-select:none;
     font-size:3rem;
-    color:rgba(255,255,255,0.1);
+    color:rgba(255,255,255,0.3);
 }
 h4 {
     position:absolute;
@@ -100,6 +107,7 @@ h5 {
     color:rgba(255,255,255,0.1);
 }
 h6 {
+    display:none;
     position:absolute;
     user-select:none;
     font-size:0.8rem;
@@ -117,37 +125,59 @@ section {
 }
 #section-0 {
     position:fixed;
-    top:0;
-    left:0;
+    top:-100vh;
+    left:-100vw;
 }
 #section-1 {
-    position:fixed;
-    top:100vh;
-    left:0;
-}
-#section-3 {
     position:fixed;
     top:-100vh;
     left:0;
 }
+#section-2 {
+    position:fixed;
+    top:-100vh;
+    left:100vw;
+}
+#section-3 {
+    position:fixed;
+    top:0;
+    left:-100vw;
+}
 #section-4 {
     position:fixed;
     top:0;
-    left:100vw;
+    left:0;
 }
 #section-5 {
     position:fixed;
     top:0;
+    left:100vw;
+}
+#section-6 {
+    position:fixed;
+    top:100vh;
     left:-100vw;
+}
+#section-7 {
+    position:fixed;
+    top:100vh;
+    left:0;
+}
+#section-8 {
+    position:fixed;
+    top:100vh;
+    left:100vw;
 }
 /* NAVIGATION */
 .nav {
     user-select:none;
     cursor:pointer;
+    pointer-events:auto;
     filter:invert(1);
     border:none;
     padding:none;
     opacity:0.7;
+    z-index:1;
 }
 #navU {
     position:fixed;
@@ -173,20 +203,44 @@ section {
     right:1rem;
     transform:translateY(-13px);
 }
+.way {
+    display:none;
+    user-select:none;
+    position:absolute;
+    font-family:gothic;
+    font-size:1rem;
+    color:rgba(255,255,255,0.2);
+    text-align:center;
+}
+.uu {transform:translateX(0) translateY(-40vh);}
+.dd {transform:translateX(0) translateY(40vh);}
+.ll {transform:translateX(-40vw) translateY(-2vh);}
+.rr {transform:translateX(40vw) translateY(-2vh);}
+
 /* SCOREBOARD */
 #scoreboard {
     position:fixed;
     user-select:none;
-    top:1rem;
-    right:1rem;
+    top:0.3rem;
+    right:0.5rem;
     color:rgba(255,255,255,0.4);
     font-size:0.6rem;
+}
+/* LOCATION GRID */
+#grid-wrapper {
+    display:none;
+    position:fixed;
+    bottom:0.5rem;
+    right:0.5rem;
+}
+.here {
+    fill:rgba(255,255,255,0.3);
 }
 /* XY COORDINATES */
 #coord {
     position:fixed;
-    bottom:1rem;
-    right:1rem;
+    bottom:0.5rem;
+    left:0.5rem;
     user-select:none;
     color:rgba(255,255,255,0.4);
     font-size:0.6rem;
@@ -206,153 +260,43 @@ button:active,
 button:focus {
     font-weight:800;
 }
+
+/* QUADRANT CONTENT */
 .Qtext {
+    color:rgba(255,255,255,0.1);
+}
+.Qtext p {
+    user-select:none;
+}
+.quadrant {
     display:flex;
     justify-content:center;
     align-items:center;
+    /* user-select:none; */
+    position:absolute;
+    top:0;
+    left:0;
     width:50vw;
     height:50vh;
-    padding:calc(min(10vw,10vh));
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-size:2rem;
+    text-align:center;
 }
-.Q1 {
-    position:absolute;
-}
-.Q4 {
-    position:fixed;
-}
-
-
-
-
-
-
-#anim {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-}
-#cartesian {
-    /* display:flex; */
-    display:none;
-    position:fixed;
-    justify-content:center;
-    align-items:center;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-}
-#layout rect {
-    width:6.87066px;
-    height:6.87066px;
-    opacity:0.2;
-}
-.fall {
-    position:fixed;
-    bottom:0;
-    left:-100vh;
-    transform-origin:bottom right;
-    width:100vh;
-    height:100vw;
-}
-#me {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    color:#fff;
-    opacity:0.8;
-    font-size:2.75rem;
-}
-#mail {
-    filter:brightness(0) invert(1);
-    width:300px;
-    width: 20px;
-    height: 20px;
-    background-color: grey;
-    border-radius: 10px;
-    transition: 2s ease-out;
-    position: fixed;
-    transform-origin:center center;
-}
-#im {
-    display:none;
-}
-.card {
-    position:fixed;
-    width:calc(min(40vw,40vh));
-    height:80vh;
-    background: rgba(255,255,255,0.2);
-    /* border: 1px solid rgba(255,255,255,0.3); */
-    /* transition-property: rotateX; */
-    transform-style: preserve-3d;
-    transition: transform 1s ease-in-out;
-    margin: auto;
-    text-align: center;
-    color: rgba(255,255,255,0.6);
-}
-.dimH {
-    content:'';
-    position:absolute;
-    top:0;
-    left:calc(-1rem + 4px);
-    width:4px;
-    height:100%;
-    font-size:0.6rem;
-    writing-mode:vertical-lr;
-    font-weight:300;
-    color: rgba(255,255,255,0.4);
-}
-.dimW {
-    content:'';
-    position:absolute;
-    bottom:-4px;
-    left:0;
-    width:100%;
-    height:2px;
-    font-size:0.6rem;
-    font-weight:300;
-    color: rgba(255,255,255,0.4);
-}
-.xpand {
-    position:absolute;
-    top:0;
-    width:100%;
-    height:100%;
-    transform-style:preserve-3d;
-    transform:rotateX(0deg);
-    transform-origin:bottom center;
-    transition: 1.7s cubic-bezier(0.19, 1, 0.22, 1);
-    pointer-events:none;
-}
-.xpandL {
-    opacity:0;
-    left:0;
-    transform:rotateZ(0deg);
-}
-.xpandR {
-    opacity:0;
-    right:0;
-    transform:rotateZ(0deg);
-}
-.Q4 h6 {
-    transition: 1s ease-in-out;
-}
+.Q1 {transform:translateX(50vw) translateY(0);}
+.Q2 {transform:translateX(0) translateY(0);}
+.Q3 {transform:translateX(0) translateY(50vh);}
+.Q4 {transform:translateX(50vw) translateY(50vh);}
 
 /* RESPONSIVE DESIGN */
-@media screen and (max-width: 650px) {
-    /* body {
-        background:#386d9b;
-    } */
+@media screen and (max-width: 1250px) {
+    .ll {transform:translateX(-30vw) translateY(-2vh);}
+    .rr {transform:translateX(30vw) translateY(-2vh);}
     .card {
         width:80vw;
     }
+}
+@media screen and (max-width: 400px) {
+    .uu {transform:translateX(0) translateY(-30vh);}
+    .dd {transform:translateX(0) translateY(30vh);}
+    .ll {transform:translateX(-30vw) translateY(-2vh);}
+    .rr {transform:translateX(30vw) translateY(-2vh);}
 }

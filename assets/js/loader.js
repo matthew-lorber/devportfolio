@@ -1,14 +1,9 @@
 /* PAGE LOADER */
 $(window).on("load",function(){
     // fireworks();
-    homeScreenSpinner();
+    $("#L11").addClass("here");
+    $(".way,#grid-wrapper,#mIn").fadeToggle();
 });
-
-function homeScreenSpinner() {
-    
-}
-
-
 
 
 

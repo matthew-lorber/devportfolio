@@ -28,6 +28,7 @@ function parallaxFx() {
     let r = {x:-d.x/20,y:d.y/20};
     $('h1').css({'transform':'translateX('+10*d.x/ctr.x+'px) translateY('+10*d.y/ctr.y+'px) rotateY('+r.x+'deg) rotateX('+r.y+'deg)'});
     $('h2').css({'transform':'translateX('+40*d.x/ctr.x+'px) translateY('+40*d.y/ctr.y+'px) rotateY('+r.x+'deg) rotateX('+r.y+'deg)'});
+    $('h3').css({'transform':'translateX('+50*-d.x/ctr.x+'px) translateY('+50*-d.y/ctr.y+'px) rotateX('+r.y+'deg) rotateY('+r.x+'deg)'});
 };
 
 // MOUSEDOWN (SCALE)
