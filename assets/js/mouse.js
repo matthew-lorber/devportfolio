@@ -32,15 +32,13 @@ function parallaxFx() {
 };
 
 // MOUSEDOWN (SCALE)
-window.addEventListener("mousedown", ()=> mouseFx());
-window.addEventListener("mouseup", ()=> restore());
-
-function mouseFx() {
-    if (!$(".nav:hover,.link").length > 0) {
-        $("#mIn,section").css("transform","scale(1.5)");
+$(window).mousedown(()=>{
+    if (!$(".nav:hover,.link:hover").length > 0) {
+        $("#mIn").css("transform","scale(1.5)");
+        $(".way").css({"font-size":"1rem"});
     }
-}
-
-function restore() {
-    $("#mIn,section").css("transform","scale(1)");
-}
+});
+$(window).mouseup(()=>{
+    $("#mIn").css("transform","scale(1)");
+    $(".way").css({"font-size":"0rem"});
+});

@@ -2,7 +2,8 @@
 $(window).on("load",function(){
     // fireworks();
     $("#L11").addClass("here");
-    $(".way,#grid-wrapper,#mIn").fadeToggle();
+    disableEnableNav(1,1);
+    $("#grid-wrapper, #mIn, .Qtext, h3").fadeToggle(1000);
 });
 
 

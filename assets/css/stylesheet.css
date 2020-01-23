@@ -24,7 +24,7 @@ figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, su
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav {
-	display: block;
+    display: block;
 }
 /* BODY */
 body {
@@ -53,13 +53,6 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
-/* LINKS */
-a {
-    text-decoration: none;
-    cursor:pointer;
-    z-index:10;
-}
-
 /* MOUSE FOLLOWER */
 #mOut {
     position:fixed;
@@ -87,14 +80,17 @@ h1 {
     user-select:none;
     font-size:8rem;
     color:rgba(255,255,255,0.1);
+    transition: font-size 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 h2 {
     position:absolute;
     user-select:none;
     font-size:4rem;
     color:rgba(255,255,255,0.2);
+    transition: font-size 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 h3 {
+    display:none;
     font-family:gothic;
     position:relative;
     top:2rem;
@@ -129,7 +125,7 @@ section {
     width:100vw;
     height: 100vh;
     overflow:hidden;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition:all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 #section-0 {
     position:fixed;
@@ -212,20 +208,18 @@ section {
     transform:translateY(-13px);
 }
 .way {
-    display:none;
     user-select:none;
     position:absolute;
     font-family:gothic;
-    font-size:1rem;
-    color:rgba(255,255,255,0.2);
+    font-size:0rem;
+    color:rgba(255,255,255,0.5);
     text-align:center;
-    transition:all 1s ease-in-out;
+    transition: font-size 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .uu {transform:translateX(0) translateY(-40vh);}
 .dd {transform:translateX(0) translateY(40vh);}
 .ll {transform:translateX(-40vw) translateY(-2vh);}
 .rr {transform:translateX(40vw) translateY(-2vh);}
-
 /* SCOREBOARD */
 #scoreboard {
     position:fixed;
@@ -241,6 +235,7 @@ section {
     position:fixed;
     bottom:0.5rem;
     right:0.5rem;
+    z-index:10;
 }
 .here {
     fill:rgba(255,255,255,0.3);
@@ -272,6 +267,7 @@ button:focus {
 
 /* QUADRANTS */
 .Qtext {
+    display:none;
     color:rgba(255,255,255,0.1);
     user-select:none;
     text-decoration:none;
@@ -303,7 +299,11 @@ button:focus {
 
 /* ABOUT > LINKS */
 .link {
+    cursor:pointer;
     fill:rgba(255,255,255,0.2);
+    text-decoration: none;
+    cursor:pointer;
+    z-index:10;
 }
 .linkCodepen {
     stroke:rgba(255,255,255,0.2);
