@@ -1,11 +1,14 @@
-<svg width="62.692mm" height="72.082mm" version="1.1" viewBox="0 0 62.692 72.082" xmlns="http://www.w3.org/2000/svg">
-	<g transform="translate(-67.684 -145.3)">
-		<g transform="translate(29.951 43.089)" fill="#fff">
-			<path transform="scale(.26458)" d="m261.08 390.08-114.69 66.219v132.44l114.69 66.219 114.69-66.219v-132.44zm0.34375 26.43 91.838 53.021v106.04l-91.838 53.021-91.836-53.021v-106.04z" stroke-width="1.1631"/>
-			<rect x="52.113" y="125.16" width="7.2235" height="26.458" ry="0" stroke-width=".22684"/>
-			<rect x="60.912" y="125.21" width="7.2235" height="26.458" ry="0" stroke-width=".22684"/>
-			<rect x="69.664" y="125.21" width="7.2235" height="26.458" ry="0" stroke-width=".22684"/>
-			<rect x="78.388" y="143.73" width="7.2235" height="7.9375" ry="0" stroke-width=".12425"/>
+<svg width="70.689mm" height="80.081mm" version="1.1" viewBox="0 0 70.689 80.081" xmlns="http://www.w3.org/2000/svg">
+	<g transform="translate(-69.425 -114.24)">
+		<path d="m80.563 140.26v28.056l24.298 14.028 24.298-14.028v-28.056l-24.298-14.028z" fill="#666" stroke="#000" stroke-width=".26458px"/>
+		<path d="m104.77 119.24-30.345 17.52v35.041l30.345 17.52 30.345-17.52v-35.041zm0.0909 6.9928 24.298 14.028v28.056l-24.298 14.028-24.298-14.028v-28.056z" fill="#333" stroke-width=".30773" style="paint-order:stroke fill markers"/>
+		<g transform="translate(35.693 16.03)" fill="#333">
+			<g stroke-width=".22684">
+				<path d="m46.39 125.3 6.4676 3.4018v26.458l-6.4676-3.4018z"/>
+				<path d="m54.442 129.49 6.4676 3.4018v26.458l-6.4676-3.4018z"/>
+				<path d="m62.715 133.9 6.4676 3.4018v26.458l-6.4676-3.4018z"/>
+			</g>
+			<path d="m70.905 154.82 7.0899-3.6416v7.9375l-7.0899 3.6416z" stroke-width=".12425"/>
 		</g>
 	</g>
 </svg>
