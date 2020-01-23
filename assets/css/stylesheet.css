@@ -212,14 +212,14 @@ section {
     position:absolute;
     font-family:gothic;
     font-size:0rem;
-    color:rgba(255,255,255,0.5);
+    color:rgba(255,255,255,0.4);
     text-align:center;
     transition: font-size 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .uu {transform:translateX(0) translateY(-40vh);}
 .dd {transform:translateX(0) translateY(40vh);}
-.ll {transform:translateX(-40vw) translateY(-2vh);}
-.rr {transform:translateX(40vw) translateY(-2vh);}
+.ll {transform:translateX(-40vw) translateY(-0.2rem);}
+.rr {transform:translateX(40vw) translateY(-0.2rem);}
 /* SCOREBOARD */
 #scoreboard {
     position:fixed;
@@ -239,6 +239,10 @@ section {
 }
 .here {
     fill:rgba(255,255,255,0.3);
+}
+.gr {
+    transform-origin:center center;
+    transform-box:fill-box;
 }
 /* XY COORDINATES */
 #coord {

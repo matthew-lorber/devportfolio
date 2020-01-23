@@ -1,0 +1,14 @@
+<svg width="210mm" height="297mm" version="1.1" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg">
+	<path d="m116.51 120.58v9.8447l9.9154 0.12576v4.7518h-7.0907v14.366l-3.0736-2e-4v11.292l23.967-40.38z" fill="#333" opacity=".65"/>
+	<path d="m116.51 120.58v9.8447l-10.071 0.12576v4.7518h7.0828v14.366l2.7395-2e-4v11.292l-23.469-40.38z" fill="#4d4d4d" opacity=".35"/>
+	<path d="m133.67 131.11 9.5596 5.6437-26.971 24.204z" fill="none" stroke="#000" stroke-width=".26458px"/>
+	<path d="m143.23 136.76-26.971 24.204 17.412-29.848z" fill="#1a1a1a" opacity=".75" stroke="#000" stroke-width=".26458px"/>
+	<path d="m98.851 131.11-6.0574-10.532h23.718z" fill="#999" opacity=".65"/>
+	<path d="m89.291 136.76 26.971 24.204-17.412-29.848z" fill="#e6e6e6" stroke="#000" stroke-width=".26458px"/>
+	<path d="m98.851 131.11-6.0574-10.532h23.718z" fill="none" stroke="#000" stroke-width=".26458px"/>
+	<path d="m133.67 131.11 6.5553-10.532h-23.718z" fill="none" stroke="#000" stroke-width=".26458px"/>
+	<path transform="scale(.26458)" d="m402.29 493.42v17.96h26.77v54.297h21.971v-54.297h26.799v-17.96z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".81081" stroke-width="1.0016" style="paint-order:stroke fill markers"/>
+	<path d="m116.51 120.58v9.8447" fill="none" stroke="#000" stroke-width=".26458px"/>
+	<path d="m116.26 160.96v-11.292" fill="none" stroke="#000" stroke-width=".26458px"/>
+	<path d="m116.51 120.58 17.163 10.532 6.5553-10.532z" fill="#333" opacity=".25" stroke="#000" stroke-width=".26458px"/>
+</svg>

@@ -1,8 +1,6 @@
 /* PAGE LOADER */
 $(window).on("load",function(){
-    // fireworks();
     $("#L11").addClass("here");
-    disableEnableNav(1,1);
     $("#grid-wrapper, #mIn, .Qtext, h3").fadeToggle(1000);
 });
 
@@ -20,42 +18,6 @@ $(".expander").click(function(){
         $(".expander").html("expand");
     }
 });
-
-// click-circles animation
-$(".anim0").on("click",function(){
-    this.style.opacity = 0.7;
-    this.classList.add("circleClicked");
-    $('.circleClicked').length === 3 ? scoreCircles() : "spaceFill";
-    
-    function scoreCircles(){
-        $('#score').html(parseInt($('#score').html()) + 1);
-        $('.anim0').fadeToggle(1000);
-    }
-});
-
-// FIREWORKS
-function fireworks(){
-    for (j=0; j<10; j++) {
-        let x = Math.random()*window.innerWidth;
-        let y = Math.random()*window.innerHeight;
-        $("#anim").append("<div class='animEle' style='position:fixed;left:"+x+"px;top:"+y+"px;width:40vw;height:40vw;border-radius:50%;background:rgba(255,255,255,0.5)'></div>");
-    }
-
-    let tl = anime.timeline({
-        easing:'easeInOutSine',
-        loop:3,
-        complete:()=>$(".animEle").remove()
-    })
-    tl
-    .add({
-        targets:'.animEle',
-        delay:anime.stagger(50),
-        scale:[0,5],
-        opacity:[1,0]
-    })
-}
-
-
 
 /* DIMENSIONING */
 function dimension() {
@@ -76,37 +38,7 @@ dimension();
     // $('#myCard').css("transform","scale(1)");
     // $("#myCard").addClass("bounce")
 
-// runs cartesian animation
-// let tl = anime.timeline({
-//     easing: 'easeInOutSine'
-// });
 
-// tl
-// .add({
-//     targets:'.cp',
-//     stroke:'#fff',
-//     duration:50
-// })
-// .add({
-//     targets: '.cp',
-//     strokeDashoffset: [anime.setDashoffset, 0],
-//     duration:1200,
-//     delay: anime.stagger(40)
-// })
-// .add({
-//     targets:'.cpFill',
-//     fill:'#fff',
-//     duration:700,
-//     easing:'easeInSine',
-// },'-=1000')
-// .add({
-//     targets:"#cartesian",
-//     opacity:0,
-//     complete:()=> {
-//         tL1();
-//         return false;
-//     }
-// });
 
 // function tL1() {
 //     $("#cartesian").remove();
