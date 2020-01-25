@@ -1,4 +1,4 @@
-$("#grid-wrapper").click(()=>anime({targets:'.gr',rotate:[0,360],loop:false}));
+$("#grid-wrapper").click(()=>anime({targets:'.gr',rotate:[0,360],loop:2}));
 
 // fireworks on score
 function score(){
@@ -58,3 +58,28 @@ tl
 $("#github,githubStar").click(function(){
     $(".star").scale(1);
 })
+
+//card expander
+$(".expander").click(function(){
+    if ($(this).html() === "expand") {
+        $(".xpandL").css("opacity",1).css("left","25vw").css("top","5vh").css("transform","rotate(8deg)");
+        $(".xpandR").css("opacity",1).css("right","25vw").css("top","5vh").css("transform","rotate(-8deg)");
+        $(".expander").html("retract");
+    } else {
+        $(".xpandL").css("opacity",0).css("left","0").css("top","0").css("transform","rotate(0)");
+        $(".xpandR").css("opacity",0).css("right","0").css("top","0").css("transform","rotate(0)");
+        $(".expander").html("expand");
+    }
+});
+
+/* DIMENSIONING */
+function dimension() {
+    $(".card").each(function(){
+        $(this).append(
+            "<div class='dimH'>" + Math.floor($(this).height()) + "px</div>" +
+            "<div class='dimW'>" + Math.floor($(this).width()) + "px</div>"
+        );
+
+    });
+}
+dimension();

@@ -43,7 +43,7 @@ function highlightNav(rr,cc) {
     newRow = parseInt(r)+rr;
     newCol = parseInt(c)+cc;
     newLoc = $("#L" + newRow + newCol);
-    $(".here").removeClass();
+    $(".here").removeClass("here");
     newLoc.addClass("here");
     disableEnableNav(newRow,newCol);
 }

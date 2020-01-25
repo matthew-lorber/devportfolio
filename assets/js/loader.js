@@ -1,35 +1,15 @@
 /* PAGE LOADER */
 $(window).on("load",function(){
     $("#L11").addClass("here");
-    $("#grid-wrapper, #mIn, .Qtext, h3").fadeToggle(1000);
+    pitch();
+    $("#grid-wrapper, #mIn, .Qtext, #section-4").fadeToggle(1000);
 });
 
+function pitch() {
 
-
-//card expander
-$(".expander").click(function(){
-    if ($(this).html() === "expand") {
-        $(".xpandL").css("opacity",1).css("left","25vw").css("top","5vh").css("transform","rotate(8deg)");
-        $(".xpandR").css("opacity",1).css("right","25vw").css("top","5vh").css("transform","rotate(-8deg)");
-        $(".expander").html("retract");
-    } else {
-        $(".xpandL").css("opacity",0).css("left","0").css("top","0").css("transform","rotate(0)");
-        $(".xpandR").css("opacity",0).css("right","0").css("top","0").css("transform","rotate(0)");
-        $(".expander").html("expand");
-    }
-});
-
-/* DIMENSIONING */
-function dimension() {
-    $(".card").each(function(){
-        $(this).append(
-            "<div class='dimH'>" + Math.floor($(this).height()) + "px</div>" +
-            "<div class='dimW'>" + Math.floor($(this).width()) + "px</div>"
-        );
-
-    });
 }
-dimension();
+
+
 
 
 
@@ -52,26 +32,18 @@ dimension();
 //     return false;
 // }
 
-// function tL2() {
-//     let tl = anime.timeline({
-//         easing: 'easeInOutSine'
-//     });
-//     tl
-//     .add({
-//         targets: '#r-1',
-//         duration:3000,
-//         opacity:[0.2,0.8,0.2,0.8,0.2,0.8,0.2,0.6],
-//     })
-//     .add({
-//         targets:'#layout',
-//         rotateZ:-45,
-//         rotateY:-45,
-//         rotateX:-25,
-//         // complete: ()=> greeting()
-//     },'-=1000');
-//     return false;
-// }
-
+function tL2() {
+    let tl = anime.timeline({
+        easing: 'easeInOutSine'
+    });
+    tl
+    .add({
+        targets: '#L11',
+        duration:3000,
+        opacity:[0.2,0.8,0.2,0.8,0.2,0.8,0.2,0.8],
+    })
+    return false;
+}
 // function greeting() {
 //     $("#me").fadeToggle(1000);
 //     window.setTimeout(()=>{$("#im").fadeToggle(1000)},1500);
