@@ -26,6 +26,10 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav {
     display: block;
 }
+/* ALL */
+* {
+    box-sizing:border-box;
+}
 /* BODY */
 body {
     display:flex;
@@ -238,24 +242,16 @@ section {
 .rr {transform:translateX(40vw) translateY(-0.2rem);}
 
 /* LINKS */
-#links {
-    width:35px;
-    height:35px;
-}
-.links {
-    display:flex;
-}
 .link {
     position:fixed;
     display:flex;
     align-items:center;
     justify-content:center;
-    cursor:pointer;
     width:35px;
     height:35px;
+    cursor:pointer;
     border-radius:50%;
-    background:none;
-    background: #222;
+    opacity:0;
 }
 .linkEle {
     transform-origin:center center;
@@ -263,12 +259,21 @@ section {
 }
 #pm {
     z-index:1;
+    position:fixed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    fill:gray;
 }
 .svgLinkFill {
-    fill:rgba(255,255,255,0.4);
+    fill:gray;
 }
 .svgLinkStroke {
-    stroke:rgba(255,255,255,0.4);
+    stroke:gray;
 }
 
 /* SCOREBOARD */
