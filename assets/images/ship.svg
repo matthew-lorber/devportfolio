@@ -1,0 +1,11 @@
+<svg width="8.5955mm" height="8.4286mm" version="1.1" viewBox="0 0 8.5955 8.4286" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<filter id="f0" x="0" y="0">
+		<feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+		</filter>
+	</defs>
+	<g transform="translate(-88.441 -159.1)">
+		<circle cx="92.731" cy="163.4" r="2.4388" fill="#666" fill-rule="evenodd" style="paint-order:stroke fill markers"/>
+		<path d="m91.912 160.7-0.60151 1.8376-1.2692 2.0376 1.4196 0.61805 0.7183 0.73536-0.02325-0.45114h1.1658l-0.02325 0.45114 0.7183-0.73536 1.4201-0.61805-1.2697-2.0376-0.60151-1.8376-0.02636 0.5178h-1.6009z"/>
+	</g>
+</svg>

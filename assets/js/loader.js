@@ -1,7 +1,6 @@
 /* PAGE LOADER */
 $(window).on("load",function(){
     $("#L11").addClass("here");
-    pitch();
     $("#grid-wrapper, #mIn, .Qtext, #section-4").fadeToggle(1000);
 });
 

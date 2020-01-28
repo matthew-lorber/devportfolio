@@ -38,16 +38,16 @@
 
     <!-- WHAT'S UP DN LL RR -->
     <article id="yourLocation" style="display:none">hello</article>
-    <article class="way uu">demos</article>
-    <article class="way dd">backend</article>
-    <article class="way ll">about</article>
-    <article class="way rr">features</article>
+    <aside class="way uu">demos</aside>
+    <aside class="way dd">backend</aside>
+    <aside class="way ll">about</aside>
+    <aside class="way rr">features</aside>
 
     <!-- NAV BUTTONS -->
-    <nav class="nav" id="navU"><img src="./assets/images/cU.png" alt="nav up"/><span style="display:none">up</span></nav>
-    <nav class="nav" id="navD"><img src="./assets/images/cD.png" alt="nav down"/><span style="display:none">down</span></nav>
-    <nav class="nav" id="navL"><img src="./assets/images/cL.png" alt="nav left"/><span style="display:none">left</span></nav>
-    <nav class="nav" id="navR"><img src="./assets/images/cR.png" alt="nav right"/><span style="display:none">right</span></nav>
+    <nav class="nav" id="nav-uu"><img src="./assets/images/nav_U.svg"/><span style="display:none">up</span></nav>
+    <nav class="nav" id="nav-dd"><img src="./assets/images/nav_D.svg"/><span style="display:none">down</span></nav>
+    <nav class="nav" id="nav-ll"><img src="./assets/images/nav_L.svg"/><span style="display:none">left</span></nav>
+    <nav class="nav" id="nav-rr"><img src="./assets/images/nav_R.svg"/><span style="display:none">right</span></nav>
     
     <!-- MOUSE XY COORDINATES --> 
     <code id="coord">( <span id="mx">0</span> , <span id="my">0</span> )</code>
@@ -131,8 +131,18 @@
         <h1>Hi</h1>
         <h2>I'm Matt</h2>
         <h3>welcome</h3>
+        <h4>get ready to turn your <span class="italic">ideas</span> into <span class="italic">reality</span></h4>
         <article class="quadrant Q1"><span class="Qtext">Scroll navigation is disabled</span></article>
-        <article class="quadrant Q2"><span class="Qtext">Q2</span></article>
+        <article class="quadrant Q2">
+            <span id="shipspan">
+                <span id="shipbg"></span>
+                <svg id="ship" width="9mm" height="9mm" viewBox="0 0 9 9" fill="#fff" opacity="0.8">
+                    <g transform="translate(-88.441 -159.1)">
+                        <path d="m91.912 160.7-0.60151 1.8376-1.2692 2.0376 1.4196 0.61805 0.7183 0.73536-0.02325-0.45114h1.1658l-0.02325 0.45114 0.7183-0.73536 1.4201-0.61805-1.2697-2.0376-0.60151-1.8376-0.02636 0.5178h-1.6009z"/>
+                    </g>
+                </svg>
+            </span>
+        </article>
         <article class="quadrant Q3"><span class="Qtext">There are eight points to gain.<br>Explore my portfolio to earn a prize!</span></article>
         <article class="quadrant Q4"><span class="Qtext"></span>
             
@@ -152,7 +162,7 @@
     <section id="section-6">
         <h1>about</h1>
         <h2>me</h2>
-        <a href="mailto:matthew.lorber.3@gmail.com" rel="nofollow" style="text-decoration:none;cursor:pointer"><h3 style="font-size:2rem"><span style="display:none">link to email me</span>matthew.lorber@writeme.com</h3></a>
+        <a href="mailto:matthew.lorber.3@gmail.com" rel="nofollow" style="text-decoration:none;cursor:pointer"><h3 style="font-size:2rem">matthew.lorber@writeme.com</h3></a>
         <article class="quadrant Q1"><span class="Qtext">Q1</span></article>
         <article class="quadrant Q2"><span class="Qtext">Q2</span>
             <svg width="62.692mm" height="72.082mm" viewBox="0 0 62.692 72.082" transform="scale(0.5)">
@@ -253,6 +263,7 @@
     <script src="./assets/js/animations.js"></script>
     <script src="./assets/js/loader.js"></script>
     <script src="./assets/js/mouse.js"></script>
+    <script src="./assets/js/space.js"></script>
     <script src="./assets/js/links.js"></script>
     <script src="./assets/js/nav.js"></script>
 

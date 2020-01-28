@@ -28,17 +28,15 @@ function parallaxFx() {
     let r = {x:-d.x/20,y:d.y/20};
     $('h1').css({'transform':'translateX('+10*d.x/ctr.x+'px) translateY('+10*d.y/ctr.y+'px) rotateY('+r.x+'deg) rotateX('+r.y+'deg)'});
     $('h2').css({'transform':'translateX('+40*d.x/ctr.x+'px) translateY('+40*d.y/ctr.y+'px) rotateY('+r.x+'deg) rotateX('+r.y+'deg)'});
-    $('h3').css({'transform':'translateX('+50*-d.x/ctr.x+'px) translateY('+50*-d.y/ctr.y+'px) rotateX('+r.y+'deg) rotateY('+r.x+'deg)'});
+    $('h3').css({'transform':'translateX('+50*d.x/ctr.x+'px) translateY('+60*d.y/ctr.y+'px) rotateY('+r.x+'deg) rotateX('+r.y+'deg)'});
 };
 
 // MOUSEDOWN (SCALE)
 $(window).mousedown(()=>{
     if (!$(".nav:hover,.link:hover").length > 0) {
         $("#mIn").css("transform","scale(1.5)");
-        $(".way").css({"font-size":"1rem"});
     }
 });
 $(window).mouseup(()=>{
     $("#mIn").css("transform","scale(1)");
-    $(".way").css({"font-size":"0rem"});
 });

@@ -50,7 +50,7 @@ body {
         linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
     background-size: var(--WW) var(--HH), var(--WW) var(--HH), var(--ww) var(--hh), var(--ww) var(--hh);
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
     line-height:1;
 }
 /* DISABLE SCROLLBARS */
@@ -106,18 +106,20 @@ h2 {
     transition: font-size 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 h3 {
-    font-family:gothic;
-    position:relative;
-    top:2rem;
+    position:absolute;
+    margin-top:2rem;
     user-select:none;
-    font-size:3rem;
+    font-family:gothic;
+    font-size:2rem;
     color:rgba(255,255,255,0.3);
 }
 h4 {
     position:absolute;
+    top:4rem;
     user-select:none;
-    font-size:2rem;
-    color:rgba(255,255,255,0.1);
+    font-family:gothic;
+    font-size:1rem;
+    color:rgba(255,255,255,0.2);
 }
 h5 {
     position:absolute;
@@ -131,6 +133,10 @@ h6 {
     user-select:none;
     font-size:0.8rem;
     color:rgba(255,255,255,0.3);
+}
+.italic {
+    font-style:italic;
+    color:rgba(255,255,255,0.4);
 }
 /* SECTIONS */
 section {
@@ -193,39 +199,32 @@ section {
     user-select:none;
     cursor:pointer;
     pointer-events:auto;
-    filter:invert(1);
+    fill:#fff;
+    opacity:0.5;
     border:none;
     padding:none;
-    opacity:0.7;
     z-index:1;
     transition:all 0.4s ease-in-out;
 }
-.nav:hover {
-    opacity:1;
-}
-#navU {
+#nav-uu {
     position:fixed;
     top:1rem;
-    left:50vw;
-    transform:translateX(-13px);
+    left:calc(50vw - fit-content);
 }
-#navD {
+#nav-dd {
     position:fixed;
     bottom:1rem;
-    left:50vw;
-    transform:translateX(-13px);
+    left:calc(50vw - fit-content);
 }
-#navL {
+#nav-ll {
     position:fixed;
-    top:50vh;
+    top:calc(50vh - 2.25mm);
     left:1rem;
-    transform:translateY(-13px);
 }
-#navR {
+#nav-rr {
     position:fixed;
-    top:50vh;
+    top:calc(50vh - 2.25mm);
     right:1rem;
-    transform:translateY(-13px);
 }
 .way {
     user-select:none;
@@ -234,10 +233,10 @@ section {
     font-size:0rem;
     color:rgba(255,255,255,0.4);
     text-align:center;
-    transition: font-size 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition:all 0.2s ease-in-out;
 }
-.uu {transform:translateX(0) translateY(-40vh);}
-.dd {transform:translateX(0) translateY(40vh);}
+.uu {transform:translateX(0) translateY(-35vh);}
+.dd {transform:translateX(0) translateY(35vh);}
 .ll {transform:translateX(-40vw) translateY(-0.2rem);}
 .rr {transform:translateX(40vw) translateY(-0.2rem);}
 
@@ -250,7 +249,6 @@ section {
     width:35px;
     height:35px;
     cursor:pointer;
-    border-radius:50%;
     opacity:0;
 }
 .linkEle {
@@ -266,14 +264,13 @@ section {
     cursor:pointer;
     width:40px;
     height:40px;
-    border-radius:50%;
-    fill:gray;
+    fill:rgba(255,255,255,0.4);
 }
 .svgLinkFill {
-    fill:gray;
+    fill:rgba(255,255,255,0.4);
 }
 .svgLinkStroke {
-    stroke:gray;
+    stroke:rgba(255,255,255,0.4);
 }
 
 /* SCOREBOARD */
@@ -329,7 +326,7 @@ button:focus {
 /* QUADRANTS */
 .Qtext {
     display:none;
-    color:rgba(255,255,255,0.1);
+    color:rgba(255,255,255,0.2);
     user-select:none;
     text-decoration:none;
 }
@@ -337,6 +334,7 @@ button:focus {
     user-select:none;
 }
 .quadrant {
+    font-family:gothic;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -345,17 +343,22 @@ button:focus {
     left:0;
     width:50vw;
     height:50vh;
-    font-size:2rem;
+    font-size:1.2rem;
     text-align:center;
 }
 .Q1 {transform:translateX(50vw) translateY(0);}
 .Q2 {transform:translateX(0) translateY(0);}
 .Q3 {transform:translateX(0) translateY(50vh);}
 .Q4 {transform:translateX(50vw) translateY(50vh);}
-.Qtable {
-    width:100%;
-    border-collapse:collapse;
-    padding:5px;
+
+/* ANIMATIONS */
+#shipbg {
+    position:absolute;
+    width:9mm;
+    height:9mm;
+    border-radius:50%;
+    background:rgba(255,255,255,0.4);
+    filter:blur(5px);
 }
 /* RESPONSIVE DESIGN */
 @media screen and (max-width: 1250px) {

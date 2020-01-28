@@ -1,8 +1,19 @@
-// if hovering location, show directions; this is also a mousedown/mouseup effect (in ./mouse.js)
-$("#grid-wrapper").hover(()=>$(".way").css("font-size","1rem"),()=>$(".way").css("font-size","0rem"));
+// if hovering location, show directions
+$(".nav").hover(
+    // hover in
+    function(){
+        this.style.opacity = 1;
+        $("." + this.id.split("-")[1]).css("font-size","1rem")
+    },
+    // hover out
+    function(){
+        $(".nav").css("opacity","0.5");
+        $(".way").css("font-size","0rem");
+    }
+);
 
-// move the sections on click (clean up verbosity later)
-$("#navU").click(()=>{
+// move the sections on navigate
+$("#nav-uu").click(()=>{
     let sss = $("section");
     for (let i=0; i<sss.length; i++) {
         let dy = $(sss[i]).position().top;
@@ -10,7 +21,7 @@ $("#navU").click(()=>{
     }
     highlightNav(-1,0)
 });
-$("#navD").click(()=>{
+$("#nav-dd").click(()=>{
     let sss = $("section");
     for (let i=0; i<sss.length; i++) {
         let dy = $(sss[i]).position().top;
@@ -18,7 +29,7 @@ $("#navD").click(()=>{
     }
     highlightNav(1,0)
 });
-$("#navL").click(()=>{
+$("#nav-ll").click(()=>{
     let sss = $("section");
     for (let i=0; i<sss.length; i++) {
         let dx = $(sss[i]).position().left;
@@ -26,7 +37,7 @@ $("#navL").click(()=>{
     }
     highlightNav(0,-1)
 });
-$("#navR").click(()=>{
+$("#nav-rr").click(()=>{
     let sss = $("section");
     for (let i=0; i<sss.length; i++) {
         let dx = $(sss[i]).position().left;

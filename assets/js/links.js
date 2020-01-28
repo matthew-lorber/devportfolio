@@ -7,7 +7,7 @@ $("#pm").on("click", function() {
     } else {
         $(this).addClass("open");
         anime({targets: "#pm", width: 75, height: 75})
-        anime({targets: "#pmx", rotate: 45});
+        anime({targets: "#pmx", rotate: 405});
         anime({targets: "#li", translateX: -50, opacity:1});
         anime({targets: "#mt", translateX: 50, opacity:1});
         anime({targets: "#gh", translateY: -50, opacity:1});
