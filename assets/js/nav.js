@@ -2,13 +2,11 @@
 $(".nav").hover(
     // hover in
     function(){
-        this.style.opacity = 1;
-        $("." + this.id.split("-")[1]).css("font-size","1rem")
+        // $("." + this.id.split("-")[1]).css("font-size","1rem")
     },
     // hover out
     function(){
-        $(".nav").css("opacity","0.5");
-        $(".way").css("font-size","0rem");
+        // $(".way").css("font-size","0rem");
     }
 );
 
@@ -61,12 +59,14 @@ function highlightNav(rr,cc) {
 
 // disable/enable nav, depending on location in grid
 function disableEnableNav(newRow,newCol) {
-    if (newRow === 0) {$("#navU").css({"opacity":"0.2","pointer-events":"none"})}
-    else {$("#navU").css({"opacity":"0.7","pointer-events":"auto"})}
-    if (newRow === 2) {$("#navD").css({"opacity":"0.2","pointer-events":"none"})}
-    else {$("#navD").css({"opacity":"0.7","pointer-events":"auto"})}
-    if (newCol === 0) {$("#navL").css({"opacity":"0.2","pointer-events":"none"})}
-    else {$("#navL").css({"opacity":"0.7","pointer-events":"auto"})}
-    if (newCol === 2) {$("#navR").css({"opacity":"0.2","pointer-events":"none"})}
-    else {$("#navR").css({"opacity":"0.7","pointer-events":"auto"})}
+    if (newRow === 0) {$("#nav-uu").css({"opacity":"0.2","pointer-events":"none"})}
+    else {$("#nav-uu").css({"opacity":"0.7","pointer-events":"auto"})}
+    if (newRow === 2) {$("#nav-dd").css({"opacity":"0.2","pointer-events":"none"})}
+    else {$("#nav-dd").css({"opacity":"0.7","pointer-events":"auto"})}
+    if (newCol === 0) {$("#nav-ll").css({"opacity":"0.2","pointer-events":"none"})}
+    else {$("#nav-ll").css({"opacity":"0.7","pointer-events":"auto"})}
+    if (newCol === 2) {$("#nav-rr").css({"opacity":"0.2","pointer-events":"none"})}
+    else {$("#nav-rr").css({"opacity":"0.7","pointer-events":"auto"})}
 }
+
+// allow drag & drop of nav icon
