@@ -71,6 +71,7 @@ li {
 }
 /* MOUSE FOLLOWER */
 #mOut {
+    display:none;
     position:fixed;
     display:flex;
     justify-content:center;
@@ -81,7 +82,7 @@ li {
     border:1px solid #11111101;
     opacity:0.7;
     user-select:none;
-    z-index:0;
+    z-index:1;
 }
 #mIn {
     display:none;
@@ -170,6 +171,12 @@ section {
     top:0;
     left:-100vw;
     background: #111;
+}
+#section-4 {
+    position:fixed;
+    top:0;
+    left:0;
+    background: #111;
     background-image: 
         linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px),
@@ -179,18 +186,29 @@ section {
     background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
     line-height:1;
 }
-#section-4 {
-    display:none;
+#loadLayer {
     position:fixed;
     top:0;
     left:0;
-    background: #111;
-    background-image: 
-        linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
-    background-size: var(--WW) var(--HH), var(--WW) var(--HH), var(--ww) var(--hh), var(--ww) var(--hh);
-    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-    line-height:1;
+    width:100vw;
+    height:100vh;
+    background:#222;
+    color:#fff;
+    font-family:gothic;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+#section-4 .Q2,
+#section-4 .Q1,
+#section-4 .Q3,
+#section-4 .Q4,
+#section-4 h1,
+#section-4 h2,
+#section-4 h3,
+#section-4 h4,
+#section-4 .logo {
+    display:none;
 }
 #section-5 {
     position:fixed;
@@ -214,6 +232,7 @@ section {
 }
 /* NAVIGATION */
 .nav {
+    display:none;
     user-select:none;
     cursor:pointer;
     pointer-events:auto;
@@ -244,6 +263,7 @@ section {
     right:1rem;
 }
 .way {
+    display:none;
     user-select:none;
     position:absolute;
     font-family:gothic;
@@ -293,6 +313,7 @@ section {
 
 /* SCOREBOARD */
 #scoreboard {
+    display:none;
     position:fixed;
     user-select:none;
     top:0.3rem;
@@ -319,6 +340,7 @@ section {
 }
 /* XY COORDINATES */
 #coord {
+    display:none;
     position:fixed;
     bottom:0.5rem;
     left:0.5rem;
@@ -379,6 +401,45 @@ button:focus {
     background:rgba(255,255,255,0.4);
     filter:blur(5px);
 }
+.wrap {
+	perspective: calc(var(--scale * 1.5));
+	perspective-origin:center center;
+    transform-origin:center center;
+}
+.r3 {
+    --scale: calc(100vw / 20);
+	position: relative;
+	transform-style: preserve-3d;
+    animation: spin 15s infinite linear;
+}
+.r3 div {
+    position: absolute;
+	width: var(--scale);
+    height: var(--scale);
+    transform-origin:center center;
+    text-align:left;
+}
+.xy {
+	transform: translateY(calc(var(--scale) / -2)) translateX(calc(var(--scale) / -2));
+    transform-origin:center center;
+    background:rgba(0,255,255,0.3);
+}
+.xz {
+	transform: translateY(calc(var(--scale) / -2)) translateX(calc(var(--scale) / -2)) rotateX(90deg) ;
+    transform-origin:center center;
+    background:rgba(255,0,255,0.3);
+}
+.yz {
+	transform: rotateY(90deg) translateY(calc(var(--scale) / -2)) translateZ(calc(var(--scale) / -2));
+    transform-origin:center center;
+    background:rgba(255,255,0,0.3);
+}
+@keyframes spin {
+	from { transform: rotateY(0) rotateX(0) rotateZ(0)}
+	to { transform: rotateY(360deg) rotateX(360deg) rotateZ(90deg)}
+}
+
+
 /* RESPONSIVE DESIGN */
 @media screen and (max-width: 1250px) {
     .ll {transform:translateX(-30vw) translateY(-2vh);}

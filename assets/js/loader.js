@@ -1,13 +1,39 @@
 /* PAGE LOADER */
 $(window).on("load",function(){
-    $("#L11").addClass("here");
-    $("#grid-wrapper, #mIn, .Qtext, #section-4").fadeToggle(1000);
+    impress();
 });
 
-function pitch() {
-
+function impress() {
+    $("#section-4").append(
+        "<span id='avatarwrap'><img id='avatar1' src='./assets/images/avatar.svg' alt='avatar' style='transform:scale(0)'/></span>"
+    );
+    let tl = anime.timeline();
+    tl
+    .add({targets:"#avatar1", duration:400, easing:'easeOutExpo', scale:[0,1.2,1]})
+    .add({targets:"#avatar1", duration:400, easing:'easeInSine', rotate:30},'+=100')
+    .add({targets:"#avatarwrap", duration:400, easing:'easeInSine', translateY:window.innerHeight/2 + 70},"-=200")
+    .add({targets:"#avatarwrap", duration:10, rotate:-30})
+    .add({targets:"#avatarwrap", duration:10, translateX:-window.innerWidth/2 - 200, translateY:-90, scale:0.7})
+    // .add({targets:"#avatar1", duration:400, easing:'easeOutSine', translateX:30}) use for event
+    .add({targets:"#loadLayer", duration:1000, easing:'easeInOutSine', opacity:0})
 }
 
+function pitch() {
+    // $("#mIn").fadeToggle(1000);
+}
+
+function explain() {
+    
+}
+
+function setup() {
+    $("#loadLayer, #grid-wrapper, #mIn, .Qtext, #section-4, .nav, .way, #coord, #scoreboard, #mIn").fadeToggle(1000);
+    $("#L11").addClass("here");
+}
+
+function release() {
+
+}
 
 
 
